@@ -1,0 +1,58 @@
+.input-field {
+  margin-bottom: 0.2rem;
+}
+
+.input-label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #999999;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-bottom: 2px solid #007bff;
+  outline: 0;
+  font-size: 12px;
+  box-sizing: border-box;
+  outline: none;
+  color: #333; /* Цвет текста по умолчанию */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.input--error {
+  border-color: #dc3545;
+  color: #dc3545; /* Красный цвет текста при ошибке */
+}
+
+.input--error::placeholder {
+  color: #dc3545; /* Красный цвет плейсхолдера при ошибке */
+}
+
+.input-error {
+  display: block;
+  margin-top: 0.5rem;
+  color: #dc3545;
+  font-size: 14px;
+}
+
+.input:disabled {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+}
+
+/* Особые стили для password поля при ошибке */
+.input--error[type="password"] {
+  color: #dc3545;
+  -webkit-text-fill-color: #dc3545; /* Для Safari */
+}
+
+.input--error[type="password"]::placeholder {
+  color: #dc3545;
+}
