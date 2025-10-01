@@ -1,0 +1,5 @@
+@use "../../style/variable.scss" as *;
+@use "../../style/mixins.scss" as *;
+.wrapper {
+  @include center-absolute;
+}

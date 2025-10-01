@@ -1,0 +1,15 @@
+@use "../../style/variable.scss" as *;
+@use "../../style/mixins.scss" as *;
+.image {
+  min-width: 9rem;
+  height: 9rem;
+  background-color: $bg-lighter-gray;
+  border-radius: 50%;
+  @include center-absolute;
+  margin-bottom: 1rem;
+}
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}

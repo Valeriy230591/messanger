@@ -1,3 +1,9 @@
 export { Login } from "./login/index";
 export { Navigate } from "./navigate/index";
 export { SignIn } from "./signin/index";
+export { notFound } from "./notFound/index";
+export { error } from "./error/index";
+export { Profile } from "./profile/index";
+export { editProfile } from "./editProfile/index";
+export { editPassword } from "./editPassword/index";
+export { Chat } from "./chat/index";

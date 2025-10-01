@@ -1,189 +1,31 @@
-// import Handlebars from "handlebars";
-// import * as Page from "./pages";
-// import * as Components from "./components"; // Импортируем компоненты
-// const formConfigs = {
-//   login: {
-//     title: "Вход",
-//     fields: [
-//       {
-//         type: "text",
-//         id: "login",
-//         name: "login",
-//         label: "Логин",
-//         placeholder: "Логин",
-//         required: true,
-//       },
-//       {
-//         type: "password",
-//         id: "password",
-//         name: "password",
-//         label: "Пароль",
-//         placeholder: "Пароль",
-//         required: true,
-//       },
-//     ],
-//     buttons: [
-//       { text: "Авторизоваться", variant: "primary", type: "submit" },
-//       { text: "Нет аккаунта?", variant: "secondary" },
-//     ],
-//   },
-
-//   signin: {
-//     title: "Регистрация",
-//     fields: [
-//       {
-//         type: "text",
-//         id: "name",
-//         name: "name",
-//         label: "Имя",
-//         placeholder: "Ваше имя",
-//         required: true,
-//       },
-//       {
-//         type: "email",
-//         id: "email",
-//         name: "email",
-//         label: "Email",
-//         placeholder: "example@mail.com",
-//         required: true,
-//       },
-//       {
-//         type: "password",
-//         id: "password",
-//         name: "password",
-//         label: "Пароль",
-//         placeholder: "Придумайте пароль",
-//         required: true,
-//       },
-//     ],
-//     buttons: [
-//       { text: "Зарегистрироваться", variant: "primary", type: "submit" },
-//       { text: "Назад к входу", variant: "secondary" },
-//     ],
-//   },
-// };
-// // Регистрируем компонент кнопки как partial
-// Handlebars.registerPartial("button", Components.Button);
-// Handlebars.registerPartial("input", Components.Input);
-// Handlebars.registerPartial("form", Components.Form);
-// const templates = {
-//   login: Handlebars.compile(Page.Login),
-//   signin: Handlebars.compile(Page.SignIn),
-//   navigate: Handlebars.compile(Page.Navigate),
-// };
-
-// // Показываем навигацию и начальную страницу
-// document.body.innerHTML = `
-//     ${templates.navigate({})}
-//     <div id="content"></div>
-// `;
-
-// // Функция для смены страницы
-// function showPage(page: string) {
-//   const content = document.getElementById("content");
-//   if (content) {
-//     if (page === "login") {
-//       content.innerHTML = templates.login({});
-//     } else if (page === "signin") {
-//       content.innerHTML = templates.signin({});
-//     }
-//   }
-// }
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const links = document.querySelectorAll(".nav-link");
-
-//   links.forEach((link) => {
-//     link.addEventListener("click", (e) => {
-//       e.preventDefault();
-//       const href = link.getAttribute("href");
-
-//       if (href === "/login") {
-//         showPage("login");
-//       } else if (href === "/signin") {
-//         showPage("signin");
-//       }
-//     });
-//   });
-
-//   showPage("login");
-// });
 import Handlebars from "handlebars";
 import * as Page from "./pages";
 import * as Components from "./components";
+import { formConfigs } from "./const/formConfig";
+import "./style.scss";
 
-// Регистрируем компоненты как partials
 Handlebars.registerPartial("button", Components.Button);
 Handlebars.registerPartial("input", Components.Input);
 Handlebars.registerPartial("form", Components.Form);
-
-// Конфигурация форм
-const formConfigs = {
-  login: {
-    title: "Вход",
-    fields: [
-      {
-        type: "text",
-        id: "login",
-        name: "login",
-        label: "Логин",
-        placeholder: "Логин",
-        required: true,
-      },
-      {
-        type: "password",
-        id: "password",
-        name: "password",
-        label: "Пароль",
-        placeholder: "Пароль",
-        required: true,
-      },
-    ],
-    buttons: [
-      { text: "Авторизоваться", variant: "primary", type: "submit" },
-      { text: "Нет аккаунта?", variant: "secondary" },
-    ],
-  },
-
-  signin: {
-    title: "Регистрация",
-    fields: [
-      {
-        type: "text",
-        id: "name",
-        name: "name",
-        label: "Имя",
-        placeholder: "Ваше имя",
-        required: true,
-      },
-      {
-        type: "email",
-        id: "email",
-        name: "email",
-        label: "Email",
-        placeholder: "example@mail.com",
-        required: true,
-      },
-      {
-        type: "password",
-        id: "password",
-        name: "password",
-        label: "Пароль",
-        placeholder: "Придумайте пароль",
-        required: true,
-      },
-    ],
-    buttons: [
-      { text: "Зарегистрироваться", variant: "primary", type: "submit" },
-      { text: "Назад к входу", variant: "secondary" },
-    ],
-  },
-};
-
+Handlebars.registerPartial("errorStatus", Components.errorStatus);
+Handlebars.registerPartial("avatar", Components.Avatar);
+Handlebars.registerPartial("profileForm", Components.profileForm);
+Handlebars.registerPartial("chatCard", Components.chatCard);
+Handlebars.registerPartial("cardList", Components.cardList);
+Handlebars.registerPartial("messageCard", Components.messageCard);
+Handlebars.registerPartial("messagesList", Components.messagesList);
+Handlebars.registerPartial("userModal", Components.userModal);
+Handlebars.registerPartial("userFormModal", Components.userFormModal);
 const templates = {
+  error: Handlebars.compile(Page.error),
+  notFound: Handlebars.compile(Page.notFound),
   login: Handlebars.compile(Page.Login),
   signin: Handlebars.compile(Page.SignIn),
   navigate: Handlebars.compile(Page.Navigate),
+  profile: Handlebars.compile(Page.Profile),
+  editProfile: Handlebars.compile(Page.editProfile),
+  editPassword: Handlebars.compile(Page.editPassword),
+  chat: Handlebars.compile(Page.Chat),
 };
 
 // Показываем навигацию и начальную страницу
@@ -192,7 +34,6 @@ document.body.innerHTML = `
     <div id="content"></div>
 `;
 
-// Функция для смены страницы
 function showPage(page: string) {
   const content = document.getElementById("content");
   if (content) {
@@ -201,7 +42,35 @@ function showPage(page: string) {
 
     if (template && config) {
       content.innerHTML = template(config);
+
+      // Добавляем обработчики для модальных окон после рендера
+      if (page === "chat") {
+        setupModalHandlers();
+      }
     }
+  }
+}
+
+function setupModalHandlers() {
+  const modalButton = document.querySelector('[data-action="open-modal"]');
+  const modal = document.querySelector(".modal");
+
+  if (modalButton && modal) {
+    modalButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.classList.toggle("modal-open");
+    });
+
+    // Закрытие модального окна при клике вне его
+    document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (
+        !target.closest(".user-button-container") &&
+        !target.closest(".modal-content")
+      ) {
+        modal.classList.remove("modal-open");
+      }
+    });
   }
 }
 
@@ -217,30 +86,33 @@ document.addEventListener("DOMContentLoaded", () => {
         showPage("login");
       } else if (href === "/signin") {
         showPage("signin");
+      } else if (href === "/notFound") {
+        showPage("notFound");
+      } else if (href === "/profile") {
+        showPage("profile");
+      } else if (href === "/editProfile") {
+        showPage("editProfile");
+      } else if (href === "/editPassword") {
+        showPage("editPassword");
+      } else if (href === "/chat") {
+        showPage("chat");
+      } else if (href === "/error") {
+        showPage("error");
       }
     });
   });
 
-  // Обработчик для кнопок
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
     const button = target.closest(".button");
 
     if (button) {
       e.preventDefault();
-
-      if (button.textContent === "Нет аккаунта?") {
-        showPage("signin");
-      } else if (button.textContent === "Назад к входу") {
-        showPage("login");
-      }
     }
   });
 
-  // Предотвращаем отправку форм
   document.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("Форма отправлена (перезагрузка предотвращена)");
   });
 
   showPage("login");

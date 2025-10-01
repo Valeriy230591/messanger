@@ -1,0 +1,15 @@
+<div class="modalform-overlay">
+  <div class="modalform">
+    <h1 class="modalform-title">{{action}}</h1>
+ <form class="user-action--form">
+  {{>input  
+        type= "text"
+        id= "login"
+        name='login'
+        placeholder= "Логин"
+        required= true
+    }} 
+    {{>button variant='primary' text=btnText }}
+    </form>
+  </div>
+</div>

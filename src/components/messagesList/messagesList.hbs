@@ -1,0 +1,9 @@
+
+    {{#each messages}}
+      {{> messageCard 
+        text=this.text 
+        time=this.time 
+        isRead=this.isRead 
+        isOutgoing=this.isOutgoing
+      }}
+    {{/each}}

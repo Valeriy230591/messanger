@@ -1,0 +1,56 @@
+@use "../../style/variable.scss" as *;
+@use "../../style/mixins.scss" as *;
+
+.message-card {
+  padding: 0.7rem;
+  background-color: $bg-pale-gray;
+  max-width: 40%;
+  width: fit-content;
+  border-radius: 15px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  &.message-outgoing {
+    margin-left: auto;
+    background-color: $hover-blue;
+    flex-direction: row;
+    .time-block {
+      color: $primary-color;
+      font-weight: 500;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.message-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  margin-top: auto;
+}
+
+.read-status {
+  width: 16px;
+  height: 16px;
+
+  .message-outgoing & {
+    color: $primary-color; // Если SVG поддерживает currentColor
+  }
+}
+
+.time-block {
+  text-align: right;
+  font-size: 0.7rem;
+  color: $bg-gray;
+  margin: 0;
+}
+
+.text-block {
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin: 0;
+  width: auto;
+}
