@@ -9,4 +9,5 @@
 }
 .btns {
   @include flexed-column;
+  width: 100%;
 }

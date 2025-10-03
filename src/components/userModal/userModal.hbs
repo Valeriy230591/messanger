@@ -1,18 +1,19 @@
+
 <div class="modal {{#if isOpen}}modal-open{{/if}}">
   <div class="modal-content">
     <div class="modal-body">
-      <button class="modal-btn">
+      <button class="modal-btn" data-action="add-user">
         <div class="plus">
-            <img src="/plus.svg">
+          <img src="/plus.svg">
         </div>
-            <p class="modal-btn--text">Добавить пользователя</p>
-    </button>
-    <button class="modal-btn">
+        <p class="modal-btn--text">Добавить пользователя</p>
+      </button>
+      <button class="modal-btn" data-action="remove-user">
         <div class="plus">
-            <img class="img-plus" src="/plus.svg">
-            </div>
-            <p class="modal-btn--text">Удалить пользователя</p>
-    </button>
+          <img class="img-plus" src="/plus.svg">
+        </div>
+        <p class="modal-btn--text">Удалить пользователя</p>
+      </button>
     </div>
   </div>
 </div>

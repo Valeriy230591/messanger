@@ -1,2 +1,2 @@
-import "./userFormModal.scss";
-export { default as userFormModal } from "./userFormModal.hbs?raw";
+import "./formModal.scss";
+export { default as formModal } from "./formModal.hbs?raw";

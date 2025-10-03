@@ -1,15 +1,61 @@
 @use "../../style/variable.scss" as *;
 @use "../../style/mixins.scss" as *;
+
 .image {
-  min-width: 9rem;
+  width: 9rem;
   height: 9rem;
   background-color: $bg-lighter-gray;
   border-radius: 50%;
   @include center-absolute;
   margin-bottom: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &:hover {
+    img {
+      filter: blur(2px);
+      transform: scale(1.05);
+    }
+
+    &::before {
+      opacity: 1;
+    }
+
+    .overlay-text {
+      opacity: 1;
+    }
+  }
 }
-.name {
-  font-size: 1rem;
-  font-weight: 600;
+.avatar-name {
   text-align: center;
 }

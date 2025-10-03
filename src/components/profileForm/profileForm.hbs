@@ -1,5 +1,6 @@
 <div class="container">
     {{>avatar avatarPath=avatarPath}}
+  
     <form class="profileForm">
         {{#each fields}}
             {{>input 
@@ -13,6 +14,7 @@
             }}
         {{/each}}
     </form>
+
     <div class="btns">
         {{#each buttons}}
             {{>button variant=this.variant text=this.text}}

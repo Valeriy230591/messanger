@@ -9,4 +9,4 @@ export { cardList } from "./cardList/index";
 export { messageCard } from "./messageCard/index";
 export { messagesList } from "./messagesList/index";
 export { userModal } from "./userModal/index";
-export { userFormModal } from "./userFormModal/index";
+export { formModal } from "./userFormModal/index";

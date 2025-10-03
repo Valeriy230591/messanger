@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 import * as Page from "./pages";
 import * as Components from "./components";
-import { formConfigs } from "./const/formConfig";
+import { mockAndConfigs } from "./const/mockAndConfig";
 import "./style.scss";
 
 Handlebars.registerPartial("button", Components.Button);
@@ -15,7 +15,8 @@ Handlebars.registerPartial("cardList", Components.cardList);
 Handlebars.registerPartial("messageCard", Components.messageCard);
 Handlebars.registerPartial("messagesList", Components.messagesList);
 Handlebars.registerPartial("userModal", Components.userModal);
-Handlebars.registerPartial("userFormModal", Components.userFormModal);
+Handlebars.registerPartial("formModal", Components.formModal);
+
 const templates = {
   error: Handlebars.compile(Page.error),
   notFound: Handlebars.compile(Page.notFound),
@@ -28,7 +29,6 @@ const templates = {
   chat: Handlebars.compile(Page.Chat),
 };
 
-// Показываем навигацию и начальную страницу
 document.body.innerHTML = `
     ${templates.navigate({})}
     <div id="content"></div>
@@ -38,39 +38,140 @@ function showPage(page: string) {
   const content = document.getElementById("content");
   if (content) {
     const template = templates[page as keyof typeof templates];
-    const config = formConfigs[page as keyof typeof formConfigs];
+    const config = mockAndConfigs[page as keyof typeof mockAndConfigs];
 
     if (template && config) {
       content.innerHTML = template(config);
 
-      // Добавляем обработчики для модальных окон после рендера
       if (page === "chat") {
-        setupModalHandlers();
+        setupChatModalHandlers();
+      } else if (page === "editProfile") {
+        setupAvatarModalHandlers();
       }
     }
   }
 }
 
-function setupModalHandlers() {
+function setupChatModalHandlers() {
   const modalButton = document.querySelector('[data-action="open-modal"]');
   const modal = document.querySelector(".modal");
+
+  const formModals = document.querySelectorAll(".modalform-overlay");
 
   if (modalButton && modal) {
     modalButton.addEventListener("click", (e) => {
       e.preventDefault();
       modal.classList.toggle("modal-open");
     });
+    const addUserBtn = modal.querySelector('[data-action="add-user"]');
+    const removeUserBtn = modal.querySelector('[data-action="remove-user"]');
+    const createChatBtn = modal.querySelector('[data-action="create-chat"]');
 
-    // Закрытие модального окна при клике вне его
+    if (addUserBtn) {
+      addUserBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        modal.classList.remove("modal-open");
+        const addUserModal = document
+          .querySelector('[id*="add-user-login"]')
+          ?.closest(".modalform-overlay");
+        if (addUserModal) {
+          addUserModal.classList.add("modal-open");
+        }
+      });
+    }
+
+    if (removeUserBtn) {
+      removeUserBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        modal.classList.remove("modal-open");
+        const removeUserModal = document
+          .querySelector('[id*="remove-user-login"]')
+          ?.closest(".modalform-overlay");
+        if (removeUserModal) {
+          removeUserModal.classList.add("modal-open");
+        }
+      });
+    }
+
+    if (createChatBtn) {
+      createChatBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        modal.classList.remove("modal-open");
+        const createChatModal = document
+          .querySelector('[id*="chat-name"]')
+          ?.closest(".modalform-overlay");
+        if (createChatModal) {
+          createChatModal.classList.add("modal-open");
+        }
+      });
+    }
+
     document.addEventListener("click", (e) => {
       const target = e.target as HTMLElement;
+
       if (
         !target.closest(".user-button-container") &&
         !target.closest(".modal-content")
       ) {
         modal.classList.remove("modal-open");
       }
+
+      if (
+        target.closest(".modalform-overlay") &&
+        !target.closest(".modalform")
+      ) {
+        formModals.forEach((formModal) => {
+          formModal.classList.remove("modal-open");
+        });
+      }
     });
+
+    const closeButtons = document.querySelectorAll(
+      ".modalform .close-button, .modalform .button--secondary"
+    );
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const formModal = button.closest(".modalform-overlay");
+        if (formModal) {
+          formModal.classList.remove("modal-open");
+        }
+      });
+    });
+  }
+}
+
+function setupAvatarModalHandlers() {
+  const avatar = document.querySelector('[data-action="open-avatar-modal"]');
+  const avatarModal = document.querySelector(".modalform-overlay");
+
+  if (avatar && avatarModal) {
+    avatar.addEventListener("click", (e) => {
+      e.preventDefault();
+      avatarModal.classList.add("modal-open");
+    });
+
+    document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+
+      if (
+        !target.closest(".modalform") &&
+        !target.closest(".avatar-clickable")
+      ) {
+        avatarModal.classList.remove("modal-open");
+      }
+    });
+
+    const closeButton = avatarModal.querySelector(
+      ".button--primary, .close-button"
+    );
+    if (closeButton) {
+      closeButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        avatarModal.classList.remove("modal-open");
+      });
+    }
   }
 }
 
