@@ -85,6 +85,9 @@
   padding: 1rem 0;
   border-top: 2px solid $bg-lighter-gray;
 }
+.user-action--form {
+  @include flexed-column;
+}
 .enter {
   background-color: $bg-lighter-gray;
   width: 100%;
