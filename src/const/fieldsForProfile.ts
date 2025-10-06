@@ -21,8 +21,8 @@ export const fieldsForProfile = [
   },
   {
     type: "text",
-    id: "name",
-    name: "name",
+    id: "first_name",
+    name: "first_name",
     label: "Имя",
     placeholder: "Имя",
     value: "Иван",
@@ -31,8 +31,8 @@ export const fieldsForProfile = [
   },
   {
     type: "text",
-    id: "secondname",
-    name: "secondname",
+    id: "second_name",
+    name: "second_name",
     label: "Фамилия",
     placeholder: "Фамилия",
     value: "Иванов",
@@ -41,8 +41,8 @@ export const fieldsForProfile = [
   },
   {
     type: "text",
-    id: "chatName",
-    name: "chatName",
+    id: "first_name",
+    name: "first_name",
     label: "Имя в чате",
     placeholder: "Имя в чате",
     value: "Иван",

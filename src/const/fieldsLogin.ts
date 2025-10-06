@@ -10,7 +10,7 @@ export const fieldsLogin = [
   {
     type: "password",
     id: "password",
-    name: "password",
+    name: "newPassword",
     label: "Пароль",
     placeholder: "Пароль",
     required: true,

@@ -18,7 +18,7 @@ export const fieldsSignIn = [
   {
     type: "text",
     id: "name",
-    name: "name",
+    name: "first_name",
     label: "Имя",
     placeholder: "Ваше имя",
     required: true,
@@ -26,7 +26,7 @@ export const fieldsSignIn = [
   {
     type: "text",
     id: "secondname",
-    name: "secondname",
+    name: "second_name",
     label: "Фамилия",
     placeholder: "Фамилия",
   },
@@ -40,14 +40,14 @@ export const fieldsSignIn = [
   {
     type: "password",
     id: "password",
-    name: "password",
+    name: "newPassword",
     label: "Пароль",
     placeholder: "Пароль",
   },
   {
     type: "password",
     id: "password-2",
-    name: "password-2",
+    name: "newPassword",
     label: "Пароль(еще раз)",
     placeholder: "Пароль(еще раз)",
     value: "feneqn",

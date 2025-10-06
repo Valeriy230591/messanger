@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import * as Page from "./pages";
-import * as Components from "./components";
+import * as Components from "./ui";
 import { mockAndConfigs } from "./const/mockAndConfig";
 import "./style.scss";
 
