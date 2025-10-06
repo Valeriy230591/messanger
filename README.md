@@ -7,9 +7,13 @@
 - **Handlebars** - шаблонизатор для динамического рендеринга
 - **SCSS** - препроцессор CSS с расширенными возможностями
 
+# Макет
+
+https://www.figma.com/design/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=1-498&t=YIXUKQ3pqvtDzSTQ-0
+
 # Cсылка на деплой
 
-messangerya.netlify.app
+https://messangerya.netlify.app/
 
 # Cкачать проект можно на
 
