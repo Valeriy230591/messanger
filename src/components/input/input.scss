@@ -44,7 +44,6 @@
   color: $error-color;
 }
 
-// Search variant
 .input-field--search {
   margin-bottom: 0.8rem;
 }
@@ -86,10 +85,8 @@
   text-align: left;
 }
 
-// Inline variant
 .input-field--inline {
-  display: flex;
-  align-items: center;
+  @include flexed-center;
   gap: 12px;
   margin-bottom: 0.2rem;
   position: relative;

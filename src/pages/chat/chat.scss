@@ -47,8 +47,7 @@
 }
 
 .messages-header {
-  display: flex;
-  align-items: center;
+  @include flexed-center;
   justify-content: space-between;
   border-bottom: 2px solid $bg-lighter-gray;
   padding: 1rem 0;
@@ -63,8 +62,7 @@
 }
 
 .messages-info {
-  display: flex;
-  align-items: center;
+  @include flexed-center;
   gap: 1rem;
 }
 
@@ -101,9 +99,7 @@
   background-color: transparent;
 }
 .no-chat-selected {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center-absolute;
   height: 100%;
   font-size: 0.8rem;
   color: $bg-gray;

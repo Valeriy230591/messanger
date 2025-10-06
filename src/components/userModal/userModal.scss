@@ -1,5 +1,5 @@
 @use "../../style/variable.scss" as *;
-
+@use "../../style/mixins.scss" as *;
 .modal {
   display: none;
   position: fixed;
@@ -10,9 +10,7 @@
   z-index: 1000;
   position: absolute;
   &-open {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include center-absolute;
   }
 
   &-content {
@@ -28,14 +26,11 @@
     text-align: center;
     font-size: 1.2rem;
     color: black;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    @include flexed-column;
   }
 }
 .modal-btn {
-  display: flex;
-  align-items: center;
+  @include flexed-center;
   background-color: transparent;
   gap: 0.5rem;
 }
@@ -47,9 +42,7 @@
   height: 22px;
   border-radius: 50%;
   border: 2px solid $primary-color;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center-absolute;
 }
 .img-plus {
   transform: rotate(45deg);

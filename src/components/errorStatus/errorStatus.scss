@@ -1,10 +1,8 @@
 @use "../../style/mixins.scss" as *;
 .container {
-  display: flex;
+  @include center-absolute;
   flex-direction: column;
   gap: 1rem;
-  align-items: center;
-  justify-content: center;
 }
 .status {
   text-align: center;

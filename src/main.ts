@@ -4,18 +4,24 @@ import * as Components from "./components";
 import { mockAndConfigs } from "./const/mockAndConfig";
 import "./style.scss";
 
-Handlebars.registerPartial("button", Components.Button);
-Handlebars.registerPartial("input", Components.Input);
-Handlebars.registerPartial("form", Components.Form);
-Handlebars.registerPartial("errorStatus", Components.errorStatus);
-Handlebars.registerPartial("avatar", Components.Avatar);
-Handlebars.registerPartial("profileForm", Components.profileForm);
-Handlebars.registerPartial("chatCard", Components.chatCard);
-Handlebars.registerPartial("cardList", Components.cardList);
-Handlebars.registerPartial("messageCard", Components.messageCard);
-Handlebars.registerPartial("messagesList", Components.messagesList);
-Handlebars.registerPartial("userModal", Components.userModal);
-Handlebars.registerPartial("formModal", Components.formModal);
+const partials = {
+  button: Components.Button,
+  input: Components.Input,
+  form: Components.Form,
+  errorStatus: Components.errorStatus,
+  avatar: Components.Avatar,
+  profileForm: Components.profileForm,
+  chatCard: Components.chatCard,
+  cardList: Components.cardList,
+  messageCard: Components.messageCard,
+  messagesList: Components.messagesList,
+  userModal: Components.userModal,
+  formModal: Components.formModal,
+};
+
+Object.entries(partials).forEach(([name, component]) => {
+  Handlebars.registerPartial(name, component);
+});
 
 const templates = {
   error: Handlebars.compile(Page.error),
@@ -31,7 +37,7 @@ const templates = {
 
 document.body.innerHTML = `
     ${templates.navigate({})}
-    <div id="content"></div>
+    <main id="content"></main>
 `;
 
 function showPage(page: string) {

@@ -25,8 +25,7 @@
 }
 
 .message-footer {
-  display: flex;
-  align-items: center;
+  @include flexed-center;
   justify-content: flex-end;
   gap: 0.3rem;
   margin-top: auto;
@@ -37,7 +36,7 @@
   height: 16px;
 
   .message-outgoing & {
-    color: $primary-color; // Если SVG поддерживает currentColor
+    color: $primary-color;
   }
 }
 

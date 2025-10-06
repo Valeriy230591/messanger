@@ -1,8 +1,7 @@
 @use "../../style/variable.scss" as *;
 @use "../../style/mixins.scss" as *;
 .card {
-  display: flex;
-  align-items: center;
+  @include flexed-center;
   justify-content: space-between;
   height: 5rem;
   border-bottom: 2px solid $bg-lighter-gray;

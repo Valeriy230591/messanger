@@ -1,7 +1,6 @@
+@use "../../style/mixins.scss" as *;
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include center-absolute;
   min-height: 100vh;
   padding: 20px;
 }
