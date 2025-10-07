@@ -1,6 +1,6 @@
 
 <div class="chat">
-  <div class="chats">
+  <article class="chats">
     <a class="link">Профиль</a>
     <form class="search-container">
         {{> input 
@@ -14,9 +14,9 @@
     <div class="card-wrapper">
         {{> cardList chats=chats}} 
     </div>
-  </div>
-  <div class="messages">
-    <div class="messages-header">
+  </article>
+  <section class="messages">
+    <header class="messages-header">
         <div class="messages-info">
             <div class="messages-no-photo"></div>
             <p class="name">Вадим</p>
@@ -38,7 +38,7 @@
                   placeholder="Логин пользователя" 
                   required=true
                 }}
-                {{> button variant='primary' text="Добавить" }}
+                {{> button type='submit' variant='primary' text="Добавить" }}
               </form>
             {{/formModal}}
 
@@ -53,7 +53,7 @@
                   placeholder="Логин пользователя" 
                   required=true
                 }}
-                {{> button variant='primary' text="Удалить" }}
+                {{> button type="submit" variant='primary' text="Удалить" }}
               </form>
             {{/formModal}}
 
@@ -68,12 +68,12 @@
                   placeholder="Название чата" 
                   required=true
                 }}
-                {{> button variant='primary' text="Создать" }}
+                {{> button type="submit" variant='primary' text="Создать" }}
               </form>
             {{/formModal}}
         </div>
-    </div>
-    <div class="messages-list">
+    </header>
+    <article class="messages-list">
       <div class="messages-block">    
        {{#if messages}}
           {{> messagesList messages=messages}}
@@ -83,15 +83,15 @@
           </div>
         {{/if}}
       </div>
-    </div> 
+    </article> 
     
-    <div class="messages-footer">
+    <footer class="messages-footer">
         <form class="enter-form">
             <input class="enter" placeholder="Сообщение">
-            <button class="entered-button">
+            <button type="submit" class="entered-button">
                 <img src="/arrow.svg">
             </button>
         </form>
-    </div>
-  </div>
+    </footer>
+  </section>
 </div>

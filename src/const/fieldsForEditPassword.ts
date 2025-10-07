@@ -11,7 +11,7 @@ export const fieldsForEditPassword = [
   {
     type: "password",
     id: "newPassword",
-    name: "newPassword",
+    name: "password",
     label: "Новый пароль",
     placeholder: "Новый пароль ",
     value: "12345",

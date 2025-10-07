@@ -16,7 +16,7 @@ export const mockAndConfigs = {
     avatarPath: "/noAvatar.svg",
     name: "Иван",
     fields: fieldsForEditPassword,
-    buttons: [{ text: "Сохранить", variant: "primary" }],
+    buttons: [{ text: "Сохранить", type: "submit", variant: "primary" }],
   },
   editProfile: {
     avatarPath: "/noAvatar.svg",
@@ -24,7 +24,7 @@ export const mockAndConfigs = {
     fields: fieldsForProfile.map((item) => {
       return { ...item, disabled: false };
     }),
-    buttons: [{ text: "Сохранить", variant: "primary" }],
+    buttons: [{ text: "Сохранить", type: "submit", variant: "primary" }],
   },
   profile: {
     avatarPath: "/noAvatar.svg",

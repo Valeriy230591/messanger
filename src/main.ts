@@ -69,6 +69,7 @@ function setupChatModalHandlers() {
       e.preventDefault();
       modal.classList.toggle("modal-open");
     });
+
     const addUserBtn = modal.querySelector('[data-action="add-user"]');
     const removeUserBtn = modal.querySelector('[data-action="remove-user"]');
     const createChatBtn = modal.querySelector('[data-action="create-chat"]');
@@ -76,7 +77,6 @@ function setupChatModalHandlers() {
     if (addUserBtn) {
       addUserBtn.addEventListener("click", (e) => {
         e.preventDefault();
-
         modal.classList.remove("modal-open");
         const addUserModal = document
           .querySelector('[id*="add-user-login"]')
@@ -114,7 +114,11 @@ function setupChatModalHandlers() {
     }
 
     document.addEventListener("click", (e) => {
-      const target = e.target as HTMLElement;
+      if (!(e.target instanceof HTMLElement)) {
+        return;
+      }
+
+      const target = e.target;
 
       if (
         !target.closest(".user-button-container") &&
@@ -159,7 +163,11 @@ function setupAvatarModalHandlers() {
     });
 
     document.addEventListener("click", (e) => {
-      const target = e.target as HTMLElement;
+      if (!(e.target instanceof HTMLElement)) {
+        return;
+      }
+
+      const target = e.target;
 
       if (
         !target.closest(".modalform") &&
@@ -187,6 +195,11 @@ document.addEventListener("DOMContentLoaded", () => {
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
+
+      if (!(link instanceof HTMLElement)) {
+        return;
+      }
+
       const href = link.getAttribute("href");
 
       if (href === "/login") {
@@ -210,7 +223,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement;
+    if (!(e.target instanceof HTMLElement)) {
+      return;
+    }
+
+    const target = e.target;
     const button = target.closest(".button");
 
     if (button) {

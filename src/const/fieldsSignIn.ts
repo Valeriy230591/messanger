@@ -25,7 +25,7 @@ export const fieldsSignIn = [
   },
   {
     type: "text",
-    id: "secondname",
+    id: "second_name",
     name: "second_name",
     label: "Фамилия",
     placeholder: "Фамилия",
@@ -40,13 +40,13 @@ export const fieldsSignIn = [
   {
     type: "password",
     id: "password",
-    name: "newPassword",
+    name: "password",
     label: "Пароль",
     placeholder: "Пароль",
   },
   {
     type: "password",
-    id: "password-2",
+    id: "password_repeat",
     name: "newPassword",
     label: "Пароль(еще раз)",
     placeholder: "Пароль(еще раз)",
