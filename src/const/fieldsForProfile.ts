@@ -42,7 +42,7 @@ export const fieldsForProfile = [
   {
     type: "text",
     id: "name",
-    name: "name",
+    name: "display_name",
     label: "Имя в чате",
     placeholder: "Имя в чате",
     value: "Иван",

@@ -1,7 +1,7 @@
 export const fieldsForEditPassword = [
   {
-    type: "password",
-    id: "password",
+    type: "oldPassword",
+    id: "oldPassword",
     name: "oldPassword",
     label: "Старый пароль",
     placeholder: "Старый пароль ",
@@ -10,7 +10,7 @@ export const fieldsForEditPassword = [
   },
   {
     type: "password",
-    id: "newPassword",
+    id: "password",
     name: "password",
     label: "Новый пароль",
     placeholder: "Новый пароль ",
