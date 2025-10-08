@@ -1,0 +1,49 @@
+@use "../../style/variable.scss" as *;
+@use "../../style/mixins.scss" as *;
+.modal {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: -231px;
+  width: auto;
+  height: 100%;
+  z-index: 1000;
+  position: absolute;
+  &-open {
+    @include center-absolute;
+  }
+
+  &-content {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &-body {
+    text-align: center;
+    font-size: 1.2rem;
+    color: black;
+    @include flexed-column;
+  }
+}
+.modal-btn {
+  @include flexed-center;
+  background-color: transparent;
+  gap: 0.5rem;
+}
+.modal-btn--text {
+  text-wrap: nowrap;
+}
+.plus {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid $primary-color;
+  @include center-absolute;
+}
+.img-plus {
+  transform: rotate(45deg);
+}

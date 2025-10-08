@@ -1,0 +1,21 @@
+
+<div class="{{#if inline}}input-field--inline{{else}}input-field{{/if}} {{#if search}}input-field--search{{/if}}">
+    {{#if label}}
+        <label for="{{id}}" class="input-label">{{label}}</label>
+    {{/if}}
+    
+    <input 
+        type="{{type}}" 
+        id="{{id}}" 
+        name="{{name}}"
+        class="input {{#if error}}input--error{{/if}} {{#if search}}input--search{{/if}}"
+        placeholder="{{placeholder}}"
+        value="{{value}}"
+        {{#if required}}required{{/if}}
+        {{#if disabled}}disabled{{/if}}
+    >
+    
+    {{#if error}}
+        <span class="input-error">{{error}}</span>
+    {{/if}}
+</div>

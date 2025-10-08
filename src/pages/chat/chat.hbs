@@ -1,0 +1,97 @@
+
+<div class="chat">
+  <article class="chats">
+    <a class="link">Профиль</a>
+    <form class="search-container">
+        {{> input 
+            search=true
+            type="text" 
+            id="search-input" 
+            name="search" 
+            placeholder="Найти"
+        }}
+    </form>
+    <div class="card-wrapper">
+        {{> cardList chats=chats}} 
+    </div>
+  </article>
+  <section class="messages">
+    <header class="messages-header">
+        <div class="messages-info">
+            <div class="messages-no-photo"></div>
+            <p class="name">Вадим</p>
+        </div>
+        <div class="user-button-container" style="position: relative;">
+            <button class="user-button" data-action="open-modal">
+                <img src="/dots.svg">
+            </button>
+            {{> userModal isOpen=isModalOpen}}
+            
+
+            {{#> formModal isOpen=isAddUserModalOpen}}
+              <h1 class="modalform-title">Добавить пользователя</h1>
+              <form class="user-action--form">
+                {{> input 
+                  type="text"
+                  id="add-user-login" 
+                  name="login" 
+                  placeholder="Логин пользователя" 
+                  required=true
+                }}
+                {{> button type='submit' variant='primary' text="Добавить" }}
+              </form>
+            {{/formModal}}
+
+
+            {{#> formModal isOpen=isRemoveUserModalOpen}}
+              <h1 class="modalform-title">Удалить пользователя</h1>
+              <form class="user-action--form">
+                {{> input 
+                  type="text"
+                  id="remove-user-login" 
+                  name="login" 
+                  placeholder="Логин пользователя" 
+                  required=true
+                }}
+                {{> button type="submit" variant='primary' text="Удалить" }}
+              </form>
+            {{/formModal}}
+
+
+            {{#> formModal isOpen=isCreateChatModalOpen}}
+              <h1 class="modalform-title">Создать чат</h1>
+              <form class="user-action--form">
+                {{> input 
+                  type="text"
+                  id="chat-name" 
+                  name="chatName" 
+                  placeholder="Название чата" 
+                  required=true
+                }}
+                {{> button type="submit" variant='primary' text="Создать" }}
+              </form>
+            {{/formModal}}
+        </div>
+    </header>
+    <article class="messages-list">
+      <div class="messages-block">    
+       {{#if messages}}
+          {{> messagesList messages=messages}}
+        {{else}}
+          <div class="no-chat-selected">
+            <p>Выберите чат чтобы отправить сообщение</p>
+          </div>
+        {{/if}}
+      </div>
+    </article> 
+    
+    <footer class="messages-footer">
+        <form class="enter-form">
+            <input name="message" class="enter" placeholder="Сообщение">
+            <button type="submit" class="entered-button">
+                <img src="/arrow.svg">
+            </button>
+        </form>
+    </footer>
+  </section>
+</div>

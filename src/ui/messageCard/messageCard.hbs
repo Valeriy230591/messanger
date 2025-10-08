@@ -1,0 +1,12 @@
+<div class="message-card {{#if isOutgoing}}message-outgoing{{/if}}">
+  <p class="text-block">{{text}}</p>
+  <div class="message-footer">
+     {{#if isOutgoing}}
+      {{#if isRead}}
+        <img src="/read.svg" class="read-status">
+      {{/if}}
+    {{/if}}
+    <p class="time-block">{{time}}</p>
+   
+  </div>
+</div>

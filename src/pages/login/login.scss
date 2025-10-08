@@ -1,0 +1,6 @@
+@use "../../style/mixins.scss" as *;
+.container {
+  @include center-absolute;
+  min-height: 100vh;
+  padding: 20px;
+}
