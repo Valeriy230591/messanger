@@ -29,13 +29,6 @@ const BlockEvents = {
 
 type BlockEvent = (typeof BlockEvents)[keyof typeof BlockEvents];
 
-type _EventArgs = {
-  [BlockEvents.INIT]: [];
-  [BlockEvents.FLOW_CDM]: [];
-  [BlockEvents.FLOW_CDU]: [BlockProps, BlockProps];
-  [BlockEvents.FLOW_RENDER]: [];
-};
-
 export default class Block {
   static EVENTS = BlockEvents;
 
