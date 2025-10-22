@@ -4,8 +4,8 @@ import ChatCardList from "../../ui/cardList/cardList";
 import MessagesList from "../../ui/messagesList/messagesList";
 import UserModal from "../../ui/userModal/userModal";
 import Modal from "../../ui/modal/modal";
-import Button from "../../ui/button/button";
-import AddUserForm from "./addUserForm"; // Импортируем нашу форму
+
+import AddUserForm from "./addUserForm";
 import RemoveUserForm from "./removeUserForm";
 import { mockChats, mockMessages } from "./mock";
 import "./chat.scss";

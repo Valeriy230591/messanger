@@ -15,7 +15,13 @@
     "indent": ["warn", 2],
     "quotes": ["warn", "double"],
     "semi": ["warn", "always"],
-    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/no-unsafe-function-type": "warn",

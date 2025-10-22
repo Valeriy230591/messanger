@@ -17,7 +17,7 @@ export default class Avatar extends Block {
 
   constructor(props: AvatarProps) {
     const avatarModalForm = new AvatarModalForm({
-      onFileSelect: (event: Event) => {
+      onFileSelect: (_event: Event) => {
         this.triggerFileInput();
       },
       onUpload: (event: Event) => {

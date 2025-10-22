@@ -82,13 +82,11 @@ export class HTTPTransport {
 
       xhr.open(method, fullUrl);
 
-      // Устанавливаем заголовки
       xhr.timeout = timeout;
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      // Если нет Content-Type и есть данные (кроме GET), устанавливаем JSON по умолчанию
       if (!headers["Content-Type"] && data && method !== "GET") {
         xhr.setRequestHeader("Content-Type", "application/json");
       }
@@ -100,7 +98,7 @@ export class HTTPTransport {
               ? (JSON.parse(xhr.responseText) as T)
               : (null as T);
             resolve(response);
-          } catch (error) {
+          } catch (/* eslint-disable @typescript-eslint/no-unused-vars */ _error) {
             resolve(xhr.responseText as T);
           }
         } else {
@@ -120,7 +118,6 @@ export class HTTPTransport {
         reject(new Error("Request aborted"));
       };
 
-      // Отправляем данные
       if (data && method !== "GET") {
         if (headers["Content-Type"] === "application/json") {
           xhr.send(JSON.stringify(data));
