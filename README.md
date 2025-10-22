@@ -6,6 +6,8 @@
 - **TypeScript** - типизированный JavaScript
 - **Handlebars** - шаблонизатор для динамического рендеринга
 - **SCSS** - препроцессор CSS с расширенными возможностями
+- **ESLint** - линтер качества кода
+- **StyleLint** - линтер качества стилей
 
 # Макет
 
@@ -34,3 +36,23 @@ npm run build
 # Режим превью
 
 npm run preview
+
+# проверка TypeScript кода
+
+npm run lint
+
+# автоматическое исправление ошибок ESLint
+
+npm run lint:fix
+
+# проверка SCSS стилей
+
+npm run stylelint
+
+# автоматическое исправление стилей
+
+npm run stylelint:fix
+
+# полная проверка кода и стилей
+
+npm run lint:all

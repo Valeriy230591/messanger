@@ -1,12 +1,12 @@
-export { Button } from "./button/index";
-export { Input } from "./input/index";
-export { Form } from "./form/index";
-export { errorStatus } from "./errorStatus/index";
-export { Avatar } from "./avatar/index";
-export { profileForm } from "./profileForm/index";
-export { chatCard } from "./chatCard/index";
-export { cardList } from "./cardList/index";
-export { messageCard } from "./messageCard/index";
-export { messagesList } from "./messagesList/index";
-export { userModal } from "./userModal/index";
-export { formModal } from "./userFormModal/index";
+export { default as Button } from "./button/button";
+export { default as Input } from "./input/input";
+
+export { default as ErrorStatus } from "./errorStatus/errorStatus";
+export { default as Avatar } from "./avatar/avatar";
+
+export { default as ChatCard } from "./chatCard/chatCard";
+export { default as cardList } from "./cardList/cardList";
+export { default as messageCard } from "./messageCard/messageCard";
+export { default as messagesList } from "./messagesList/messagesList";
+export { default as userModal } from "./userModal/userModal";
+export { default as Modal } from "./modal/modal";

@@ -1,0 +1,23 @@
+@use "../../style/mixins.scss" as *;
+@use "../../style/variable.scss" as *;
+
+.container {
+  @include center-absolute;
+
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.signin-form {
+  @include form-wrap;
+  @include flexed-column;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.form-field {
+  margin-bottom: 1rem;
+}

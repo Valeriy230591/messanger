@@ -16,6 +16,7 @@
     margin-left: auto;
     background-color: $hover-blue;
     flex-direction: row;
+
     .time-block {
       color: $primary-color;
       font-weight: 500;
@@ -26,6 +27,7 @@
 
 .message-footer {
   @include flexed-center;
+
   justify-content: flex-end;
   gap: 0.3rem;
   margin-top: auto;

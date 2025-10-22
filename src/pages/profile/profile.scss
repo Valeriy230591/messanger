@@ -1,0 +1,16 @@
+@use "../../style/variable.scss" as *;
+@use "../../style/mixins.scss" as *;
+
+.wrapper {
+  @include center-absolute;
+}
+
+.profile-form {
+  @include profile-form;
+}
+
+.btns {
+  @include flexed-column;
+
+  width: 100%;
+}

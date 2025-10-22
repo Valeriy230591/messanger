@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "scss/dollar-variable-pattern": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "scss/double-slash-comment-whitespace-inside": null,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null
+  },
+  "ignoreFiles": ["dist/**", "node_modules/**"]
+}

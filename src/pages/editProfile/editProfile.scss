@@ -1,0 +1,9 @@
+@use "../../style/mixins.scss" as *;
+
+.editProfile-form {
+  @include profile-form;
+}
+
+.btn-wrapper {
+  margin-top: 1rem;
+}

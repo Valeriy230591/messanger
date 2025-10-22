@@ -1,1 +1,2 @@
-export { default as editProfile } from "./editProfile.hbs?raw";
+import "./editProfile.scss";
+export { default as EditProfile } from "./editProfile.ts";

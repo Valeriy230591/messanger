@@ -9,6 +9,9 @@
 
 .chats {
   @include flexed-column;
+
+  max-height: 100vh;
+  overflow-y: auto;
   background-color: $bg-very-light-gray;
   width: 25%;
   border-right: 2px solid $bg-light-gray;
@@ -22,18 +25,18 @@
   line-height: 12px;
   color: $bg-gray;
   cursor: pointer;
-  padding: 1.5rem 0.8rem 0rem 0.8rem;
+  padding: 1.5rem 0.8rem 0;
 }
 
 .search-container {
   position: relative;
-
   border-bottom: 2px solid $bg-lighter-gray;
-  padding: 1.5rem 0.8rem 0rem 0.8rem;
+  padding: 1.5rem 0.8rem 0;
 }
 
 .card-wrapper {
   @include flexed-column;
+
   gap: 0;
 }
 
@@ -48,10 +51,12 @@
 
 .messages-header {
   @include flexed-center;
+
   justify-content: space-between;
   border-bottom: 2px solid $bg-lighter-gray;
   padding: 1rem 0;
   flex-shrink: 0;
+  position: relative;
 }
 
 .messages-no-photo {
@@ -63,17 +68,36 @@
 
 .messages-info {
   @include flexed-center;
+
   gap: 1rem;
 }
 
-.user-button {
-  height: 1rem;
-  width: 0.15rem;
+.user-button-container {
   position: relative;
 }
+
+.user-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $bg-lighter-gray;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 .messages-block {
   height: 100%;
 }
+
 .messages-list {
   flex: 1;
   padding: 1rem 0;
@@ -85,25 +109,38 @@
   padding: 1rem 0;
   border-top: 2px solid $bg-lighter-gray;
 }
+
 .user-action--form {
   @include flexed-column;
 }
+
 .enter {
   background-color: $bg-lighter-gray;
   width: 100%;
   border-radius: 30px;
   padding: 0.5rem;
 }
+
 .enter-form {
   display: flex;
   gap: 0.5rem;
 }
+
 .entered-button {
   background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
+
 .no-chat-selected {
   @include center-absolute;
+
   height: 100%;
   font-size: 0.8rem;
   color: $bg-gray;
+}
+
+.action-user-modal-form {
+  display: flex;
+  flex-direction: column;
 }

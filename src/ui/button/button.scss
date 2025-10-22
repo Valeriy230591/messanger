@@ -1,5 +1,6 @@
 @use "../../style/variable.scss" as *;
 @use "../../style/mixins.scss" as *;
+
 .button {
   padding: 12px 24px;
   border: none;
@@ -8,12 +9,12 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: inherit;
-  margin: 5px;
   text-decoration: none;
   display: inline-block;
   text-align: center;
   width: 100%;
 }
+
 .button--primary {
   background-color: $primary-color;
   color: $bg-light;

@@ -1,5 +1,10 @@
 @use "../../style/variable.scss" as *;
 @use "../../style/mixins.scss" as *;
+
+.inp-wrapper {
+  width: 100%;
+}
+
 .input-field {
   margin-bottom: 0.2rem;
 }
@@ -16,7 +21,6 @@
   padding: 12px;
   border: 0;
   border-bottom: 2px solid $primary-color;
-  outline: 0;
   font-size: 12px;
   box-sizing: border-box;
   outline: none;
@@ -50,7 +54,7 @@
 
 .input--search {
   width: 100%;
-  padding: 10px 40px 10px 40px;
+  padding: 10px 40px;
   text-align: center;
   background-image: url("/search-icon.svg");
   background-repeat: no-repeat;
@@ -87,10 +91,11 @@
 
 .input-field--inline {
   @include flexed-center;
+
   gap: 12px;
   margin-bottom: 0.2rem;
   position: relative;
-  border-bottom: 2px solid #999999;
+  border-bottom: 2px solid #999;
 }
 
 .input-field--inline .input-label {
@@ -107,7 +112,6 @@
   flex: 1;
   padding: 12px;
   border: 0;
-  outline: 0;
   font-size: 12px;
   box-sizing: border-box;
   outline: none;

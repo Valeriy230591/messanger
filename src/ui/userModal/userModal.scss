@@ -1,49 +1,79 @@
 @use "../../style/variable.scss" as *;
 @use "../../style/mixins.scss" as *;
+
 .modal {
   display: none;
   position: fixed;
-  top: 80px;
-  left: -231px;
-  width: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
   z-index: 1000;
-  position: absolute;
+
   &-open {
-    @include center-absolute;
+    display: block;
   }
 
   &-content {
-    position: relative;
+    position: absolute;
     background: white;
     border-radius: 12px;
     padding: 1rem;
     min-width: 200px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+    border: 1px solid $bg-lighter-gray;
+    z-index: 1001;
   }
 
   &-body {
-    text-align: center;
-    font-size: 1.2rem;
+    text-align: left;
+    font-size: 0.9rem;
     color: black;
+
     @include flexed-column;
+
+    gap: 0.5rem;
   }
 }
+
 .modal-btn {
   @include flexed-center;
+
+  justify-content: flex-start;
   background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 100%;
   gap: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $bg-lighter-gray;
+  }
 }
+
 .modal-btn--text {
   text-wrap: nowrap;
+  font-size: 0.8rem;
+  margin: 0;
+  color: $black;
 }
+
 .plus {
   width: 22px;
   height: 22px;
   border-radius: 50%;
   border: 2px solid $primary-color;
-  @include center-absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
+
 .img-plus {
   transform: rotate(45deg);
+  width: 12px;
+  height: 12px;
 }
