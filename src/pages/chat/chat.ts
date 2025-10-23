@@ -87,7 +87,7 @@ export default class ChatPage extends Block {
       const messageText = formData.get("message") as string;
       if (messageText && messageText.trim() !== "") {
         const messageData = {
-          message: messageText.trim(),
+          message: messageText,
         };
 
         console.log(messageData);
@@ -112,7 +112,6 @@ export default class ChatPage extends Block {
     const handleOutsideClick = (event: Event) => {
       const { target } = event;
 
-      // Проверяем, что target является HTMLElement
       if (!(target instanceof HTMLElement)) {
         return;
       }
