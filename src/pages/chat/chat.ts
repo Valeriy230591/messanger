@@ -84,18 +84,21 @@ export default class ChatPage extends Block {
 
       const form = event.target as HTMLFormElement;
       const formData = new FormData(form);
-      const messageData = {
-        message: formData.get("message") as string,
-      };
+      const messageText = formData.get("message") as string;
+      if (messageText && messageText.trim() !== "") {
+        const messageData = {
+          message: messageText.trim(),
+        };
 
-      console.log(messageData);
-      form.reset();
+        console.log(messageData);
+        form.reset();
+      }
     };
 
     const handleUserButtonClick = (event: Event) => {
       const target = event.target as HTMLElement;
       const button = target.closest(
-        "[data-action=\"open-modal\"]"
+        '[data-action="open-modal"]'
       ) as HTMLElement;
 
       if (button) {
@@ -106,12 +109,17 @@ export default class ChatPage extends Block {
         userModal.open();
       }
     };
-
     const handleOutsideClick = (event: Event) => {
-      const target = event.target as HTMLElement;
+      const { target } = event;
+
+      // Проверяем, что target является HTMLElement
+      if (!(target instanceof HTMLElement)) {
+        return;
+      }
+
       if (
         !target.closest(".modal-content") &&
-        !target.closest("[data-action=\"open-modal\"]")
+        !target.closest('[data-action="open-modal"]')
       ) {
         userModal.close();
       }
@@ -135,7 +143,7 @@ export default class ChatPage extends Block {
         },
         click: (event: Event) => {
           const target = event.target as HTMLElement;
-          if (target.closest("[data-action=\"open-modal\"]")) {
+          if (target.closest('[data-action="open-modal"]')) {
             handleUserButtonClick(event);
           } else {
             handleOutsideClick(event);

@@ -44,7 +44,7 @@ export const validators = {
       };
     }
 
-    const hasUpperCase = /[A-ZА-Я]/.test(value);
+    const hasUpperCase = /[A-ZА-ЯЁ]/.test(value);
     const hasNumber = /\d/.test(value);
 
     if (!hasUpperCase) {
@@ -116,7 +116,7 @@ export const validators = {
   },
 
   name: (value: string): ValidationResult => {
-    const nameRegex = /^[A-ZА-Я][a-zа-я-]*$/;
+    const nameRegex = /^[A-ZА-ЯЁ][a-zа-яё-]*$/;
 
     if (!nameRegex.test(value)) {
       return {
