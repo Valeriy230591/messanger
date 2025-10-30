@@ -1,1 +1,2 @@
-export { default as editPassword } from "./editPassword.hbs?raw";
+import "./editPassword.scss";
+export { default as EditPassword } from "./editPassword.ts";

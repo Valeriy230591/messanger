@@ -1,1 +1,1 @@
-export { default as messagesList } from "./messagesList.hbs?raw";
+export { default as messagesList } from "./messagesList.ts";
