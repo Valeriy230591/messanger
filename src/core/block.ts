@@ -205,7 +205,7 @@ export default class Block {
     const template = Handlebars.compile(this.render());
     fragment.innerHTML = template(propsAndStubs);
 
-    Object.entries(this.children).forEach(([key, child]) => {
+    Object.entries(this.children).forEach(([, child]) => {
       if (Array.isArray(child)) {
         child.forEach((component) => {
           const stub = fragment.content.querySelector(

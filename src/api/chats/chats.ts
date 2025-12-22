@@ -1,6 +1,5 @@
 import { HTTPTransport } from "../../core/httpTransport";
 import type {
-  APIError,
   Chat,
   CreateChatRequest,
   CreateChatResponse,

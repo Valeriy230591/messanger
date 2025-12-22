@@ -12,11 +12,7 @@ import CreateChatForm from "./createChatForm";
 import { withRouter } from "../../utils/withRouter";
 import { connect } from "../../utils/connect";
 import type { Chat, ChatPageProps, Message } from "./types";
-import {
-  createChatWebSocket,
-  sendMessage as sendMessageService,
-  getChatUsers,
-} from "../../services/chats";
+import { createChatWebSocket, getChatUsers } from "../../services/chats";
 import "./chat.scss";
 
 class ChatPage extends Block {
@@ -134,7 +130,6 @@ class ChatPage extends Block {
       const formData = new FormData(form);
       const messageText = formData.get("message") as string;
       if (messageText && messageText.trim() !== "") {
-        this.sendMessage(messageText.trim());
         form.reset();
       }
     };
@@ -288,10 +283,6 @@ class ChatPage extends Block {
         });
       }
     }
-  }
-
-  private sendMessage(message: string): void {
-    const success = sendMessageService(this.socket, message);
   }
 
   async checkAuth() {

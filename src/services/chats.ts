@@ -89,7 +89,6 @@ export const deleteChat = async (chatId: number): Promise<boolean> => {
     await getChats();
     return true;
   } catch (error) {
-    const errorMessage = await handleApiError(error);
     return false;
   }
 };
@@ -101,7 +100,6 @@ export const getChatUsers = async (
     const users = await chatsApi.getChatUsers(chatId);
     return users;
   } catch (error) {
-    const errorMessage = await handleApiError(error);
     return [];
   }
 };
@@ -111,7 +109,6 @@ export const getChatToken = async (chatId: number): Promise<string | null> => {
     const response = await chatsApi.getChatToken(chatId);
     return response.token;
   } catch (error) {
-    const errorMessage = await handleApiError(error);
     return null;
   }
 };
@@ -124,7 +121,6 @@ export const addUsersToChat = async (
     await chatsApi.addUsersToChat({ users: userIds, chatId });
     return true;
   } catch (error) {
-    const errorMessage = await handleApiError(error);
     return false;
   }
 };
@@ -137,7 +133,6 @@ export const deleteUsersFromChat = async (
     await chatsApi.deleteUsersFromChat({ users: userIds, chatId });
     return true;
   } catch (error) {
-    const errorMessage = await handleApiError(error);
     return false;
   }
 };
@@ -195,8 +190,6 @@ export const createChatWebSocket = async (
     });
 
     socket.addEventListener("error", () => {});
-
-    socket.addEventListener("close", (event: CloseEvent) => {});
 
     return socket;
   } catch (error) {
