@@ -15,11 +15,13 @@
   background-color: $bg-very-light-gray;
   width: 25%;
   border-right: 2px solid $bg-light-gray;
+
   .chats-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+
     .create-chat-btn {
       background-color: #3369f3;
       color: white;
@@ -197,9 +199,8 @@
   .form-success {
     padding: 12px 16px;
     margin: 10px 0;
-    background-color: rgba(52, 199, 89, 0.1);
+    background-color: rgb(52 199 89 / 10%);
     color: #34c759;
-
     font-size: 14px;
     font-weight: 500;
     line-height: 1.4;

@@ -3,6 +3,7 @@
 
 .container {
   @include center-absolute;
+
   min-height: 100vh;
   padding: 20px;
 }
@@ -20,6 +21,7 @@ h1 {
 .form-field {
   margin-bottom: 1rem;
 }
+
 .error {
   color: red;
 }
