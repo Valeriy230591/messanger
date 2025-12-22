@@ -1,15 +1,15 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  functions = "netlify/functions"  # опционально
+  functions = ""  # Явно укажите пустую строку, если не используете функции
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
+# ДОБАВЬТЕ ЭТО:
 [[headers]]
-  for = "/*"
+  for = "/assets/*"
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
+    cache-control = "public, max-age=31536000, immutable"
