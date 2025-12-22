@@ -8,10 +8,20 @@
   height: 5rem;
   border-bottom: 2px solid $bg-lighter-gray;
   padding: 1.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba($hover-blue, 1);
+  }
+
+  &:active {
+    background-color: rgba($hover-blue, 1);
+  }
 }
 
-.card:active {
-  background-color: $hover-blue;
+.card.active {
+  background-color: rgba($hover-blue, 1);
 }
 
 .info {

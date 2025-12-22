@@ -6,7 +6,7 @@ type EventHandler = (event: Event) => void;
 type Events = Record<string, EventHandler>;
 type Attrs = Record<string, string>;
 
-interface BlockProps {
+export interface BlockProps {
   events?: Events;
   attrs?: Attrs;
   className?: string;
@@ -205,20 +205,30 @@ export default class Block {
     const template = Handlebars.compile(this.render());
     fragment.innerHTML = template(propsAndStubs);
 
-    Object.entries(this.children).forEach(([_key, child]) => {
+    Object.entries(this.children).forEach(([key, child]) => {
       if (Array.isArray(child)) {
         child.forEach((component) => {
           const stub = fragment.content.querySelector(
             `[data-id="${component._id}"]`
           );
+
           if (stub && component.getContent) {
-            stub.replaceWith(component.getContent()!);
+            const content = component.getContent();
+
+            if (content) {
+              stub.replaceWith(content);
+            }
           }
         });
       } else {
         const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
+
         if (stub && child.getContent) {
-          stub.replaceWith(child.getContent()!);
+          const content = child.getContent();
+
+          if (content) {
+            stub.replaceWith(content);
+          }
         }
       }
     });
@@ -227,7 +237,9 @@ export default class Block {
   }
 
   protected _render(): void {
-    if (!this._element) return;
+    if (!this._element) {
+      return;
+    }
 
     this._removeEvents();
     const block = this._compile();
@@ -272,7 +284,9 @@ export default class Block {
   }
 
   private _createDocumentElement(tagName: string): HTMLElement {
-    return document.createElement(tagName);
+    const element = document.createElement(tagName);
+
+    return element;
   }
 
   public show(): void {
