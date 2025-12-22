@@ -1,14 +1,14 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  functions = ""  # Явно укажите пустую строку, если не используете функции
+  functions = ""  
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# ДОБАВЬТЕ ЭТО:
+
 [[headers]]
   for = "/assets/*"
   [headers.values]
