@@ -12,7 +12,11 @@ import CreateChatForm from "./createChatForm";
 import { withRouter } from "../../utils/withRouter";
 import { connect } from "../../utils/connect";
 import type { Chat, ChatPageProps, Message } from "./types";
-import { createChatWebSocket, getChatUsers } from "../../services/chats";
+import {
+  createChatWebSocket,
+  sendMessage as sendMessageService,
+  getChatUsers,
+} from "../../services/chats";
 import "./chat.scss";
 
 class ChatPage extends Block {
@@ -35,7 +39,6 @@ class ChatPage extends Block {
     const storeState = window.store.getState();
     const user = storeState.user as { id?: number } | null;
     const currentUserId = user?.id;
-
     const handleChatClick = async (chatId: number) => {
       const storeState = window.store.getState();
       const user = storeState.user as { id?: number } | null;
@@ -70,8 +73,12 @@ class ChatPage extends Block {
       this.socket = socket;
 
       socket.addEventListener("message", (event: MessageEvent) => {
-        const data: Message | Message[] = JSON.parse(event.data);
-        this.handleWebSocketMessage(data);
+        try {
+          const data: Message | Message[] = JSON.parse(event.data);
+          this.handleWebSocketMessage(data);
+        } catch (error) {
+          console.error("Ошибка при парсинге сообщения WebSocket:", error);
+        }
       });
 
       window.store.set({ currentChatId: chatId });
@@ -130,6 +137,7 @@ class ChatPage extends Block {
       const formData = new FormData(form);
       const messageText = formData.get("message") as string;
       if (messageText && messageText.trim() !== "") {
+        this.sendMessage(messageText.trim());
         form.reset();
       }
     };
@@ -283,6 +291,10 @@ class ChatPage extends Block {
         });
       }
     }
+  }
+
+  private sendMessage(message: string): void {
+    sendMessageService(this.socket, message);
   }
 
   async checkAuth() {

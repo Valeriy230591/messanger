@@ -1,4 +1,5 @@
 import { HTTPTransport } from "../../core/httpTransport";
+import { BASE_URL } from "../const";
 import type {
   ProfileUpdateData,
   PasswordUpdateData,
@@ -6,7 +7,7 @@ import type {
   AvatarUpdateResponse,
 } from "./types";
 
-const profileApi = new HTTPTransport("https://ya-praktikum.tech/api/v2");
+const profileApi = new HTTPTransport(BASE_URL);
 
 export default class ProfileApi {
   async updateProfile(data: ProfileUpdateData): Promise<ProfileResponse> {

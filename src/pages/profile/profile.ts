@@ -101,6 +101,8 @@ export default class ProfilePage extends Block {
       events: {
         click: (event: Event) => {
           event.preventDefault();
+
+          sessionStorage.setItem("activeSettingsPage", "editProfile");
           Store.getInstance().set({ activeSettingsPage: "editProfile" });
         },
       },
@@ -113,6 +115,8 @@ export default class ProfilePage extends Block {
       events: {
         click: (event: Event) => {
           event.preventDefault();
+
+          sessionStorage.setItem("activeSettingsPage", "editPassword");
           Store.getInstance().set({ activeSettingsPage: "editPassword" });
         },
       },
@@ -125,6 +129,8 @@ export default class ProfilePage extends Block {
       events: {
         click: (event: Event) => {
           event.preventDefault();
+
+          sessionStorage.removeItem("activeSettingsPage");
           logout();
         },
       },
@@ -217,6 +223,8 @@ export default class ProfilePage extends Block {
   }
 
   private redirectToLogin(): void {
+    sessionStorage.removeItem("activeSettingsPage");
+
     if (window.router) {
       window.router.go("/");
     }
