@@ -81,6 +81,8 @@ class EditPasswordPage extends Block {
       events: {
         click: (event: Event) => {
           event.preventDefault();
+
+          sessionStorage.setItem("activeSettingsPage", "profile");
           Store.getInstance().set({ activeSettingsPage: "profile" });
           this.clearValidationError();
         },
@@ -200,6 +202,7 @@ class EditPasswordPage extends Block {
 
     const { passwordError } = this.props as EditPasswordPageProps;
     if (!passwordError) {
+      sessionStorage.setItem("activeSettingsPage", "profile");
       Store.getInstance().set({ activeSettingsPage: "profile" });
 
       const updateInput = (inputName: string) => {
@@ -226,8 +229,6 @@ class EditPasswordPage extends Block {
           </div>
           
           <form class="editPassword-form" autocomplete="off">
-          
-            
             {{{oldPasswordInput}}}
             {{{newPasswordInput}}}
             {{{repeatPasswordInput}}}

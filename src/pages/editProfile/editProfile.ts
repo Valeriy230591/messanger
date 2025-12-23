@@ -114,6 +114,7 @@ class EditProfilePage extends Block {
         click: (event: Event) => {
           event.preventDefault();
 
+          sessionStorage.setItem("activeSettingsPage", "profile");
           Store.getInstance().set({ activeSettingsPage: "profile" });
         },
       },
@@ -254,6 +255,7 @@ class EditProfilePage extends Block {
 
     const { profileError } = this.props as EditProfilePageProps;
     if (!profileError) {
+      sessionStorage.setItem("activeSettingsPage", "profile");
       Store.getInstance().set({ activeSettingsPage: "profile" });
     }
   }

@@ -5,6 +5,7 @@ import EditPasswordPage from "../editPassword/editPassword";
 import { withRouter } from "../../utils/withRouter";
 import { connect } from "../../utils/connect";
 import type Router from "../../core/Router";
+import { Store } from "../../core/Store";
 
 interface SettingsPageProps extends BlockProps {
   router?: Router;
@@ -15,16 +16,22 @@ interface SettingsPageProps extends BlockProps {
 
 class SettingsPage extends Block {
   constructor(props: SettingsPageProps = {}) {
+    const savedPage = sessionStorage.getItem("activeSettingsPage");
+
+    if (savedPage && savedPage !== props.activeSettingsPage) {
+      setTimeout(() => {
+        Store.getInstance().set({ activeSettingsPage: savedPage });
+      }, 0);
+    }
+
     super("div", props as BlockProps);
 
     this.initChildren();
   }
 
   private initChildren(): void {
-    // Инициализируем currentPage
     this.children.currentPage = this.getCurrentPageComponent();
 
-    // Вызываем повторный рендер после добавления currentPage
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
@@ -61,6 +68,13 @@ class SettingsPage extends Block {
     const newTypedProps = newProps as SettingsPageProps;
 
     if (oldTypedProps.activeSettingsPage !== newTypedProps.activeSettingsPage) {
+      if (newTypedProps.activeSettingsPage) {
+        sessionStorage.setItem(
+          "activeSettingsPage",
+          newTypedProps.activeSettingsPage
+        );
+      }
+
       this.children.currentPage = this.getCurrentPageComponent();
 
       const newPage = this.children.currentPage as Block;

@@ -152,7 +152,8 @@ export const searchUsers = async (
 
 export const createChatWebSocket = async (
   chatId: number,
-  userId: number
+  userId: number,
+  onMessage?: (data: WebSocketMessage | WebSocketMessage[]) => void
 ): Promise<WebSocket | null> => {
   try {
     const token = await getChatToken(chatId);
@@ -179,13 +180,19 @@ export const createChatWebSocket = async (
         event.data
       );
 
-      if (Array.isArray(data)) {
-        window.store.set({ messages: data });
-      } else if (data.type === "message") {
-        const storeState = window.store.getState();
-        const currentMessages =
-          (storeState.messages as WebSocketMessage[]) || [];
-        window.store.set({ messages: [...currentMessages, data] });
+      if (onMessage) {
+        // Если передан callback, используем его
+        onMessage(data);
+      } else {
+        // Иначе стандартная обработка (для обратной совместимости)
+        if (Array.isArray(data)) {
+          window.store.set({ messages: data });
+        } else if (data.type === "message") {
+          const storeState = window.store.getState();
+          const currentMessages =
+            (storeState.messages as WebSocketMessage[]) || [];
+          window.store.set({ messages: [...currentMessages, data] });
+        }
       }
     });
 
