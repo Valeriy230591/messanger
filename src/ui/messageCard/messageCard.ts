@@ -22,7 +22,7 @@ export default class MessageCard extends Block {
   }
 
   render(): string {
-    const { text, time, isOutgoing, isRead } = this.props;
+    const { text, time, isOutgoing } = this.props;
 
     return `
       <div class="message-content">
