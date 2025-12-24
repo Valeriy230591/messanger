@@ -30,9 +30,7 @@ export default class MessageCard extends Block {
         <div class="message-footer">
           ${
             isOutgoing
-              ? isRead
-                ? '<img src="/read.svg" class="read-status" alt="Прочитано">'
-                : '<img src="/unread.svg" class="read-status" alt="Не прочитано">'
+              ? '<img src="/read.svg" class="read-status" alt="Прочитано">'
               : ""
           }
           <p class="time-block">${time}</p>
