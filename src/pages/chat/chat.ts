@@ -237,11 +237,6 @@ class ChatPage extends Block {
     const state = window.store.getState();
     const user = state.user as { id?: number } | null;
 
-    if (!user || !user.id) {
-      window.router.go("/");
-      return;
-    }
-
     await this.checkAuth();
 
     if (user?.id) {
