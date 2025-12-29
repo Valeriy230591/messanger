@@ -2,6 +2,7 @@ import Block from "../../core/block";
 import "./messageCard.scss";
 
 interface MessageCardProps {
+  id: number;
   text: string;
   time: string;
   isOutgoing?: boolean;
@@ -21,19 +22,19 @@ export default class MessageCard extends Block {
   }
 
   render(): string {
-    const { text, time, isRead } = this.props;
+    const { text, time, isOutgoing } = this.props;
 
     return `
-      <p class="text-block">${text}</p>
-      <div class="message-footer">
-        ${
-  this.props.isOutgoing
-    ? `
-          ${isRead ? "<img src=\"/read.svg\" class=\"read-status\">" : ""}
-        `
-    : ""
-}
-        <p class="time-block">${time}</p>
+      <div class="message-content">
+        <p class="text-block">${text}</p>
+        <div class="message-footer">
+          ${
+            isOutgoing
+              ? '<img src="/read.svg" class="read-status" alt="Прочитано">'
+              : ""
+          }
+          <p class="time-block">${time}</p>
+        </div>
       </div>
     `;
   }

@@ -25,9 +25,11 @@ export default class AvatarModalForm extends Block {
     const uploadButton = new Button({
       text: "Загрузить фото",
       variant: "primary",
+      type: "button",
       events: {
         click: (event: Event) => {
           event.preventDefault();
+          event.stopPropagation();
           props.onUpload(event);
         },
       },
@@ -58,7 +60,6 @@ export default class AvatarModalForm extends Block {
       if (fileInputComponent.element) {
         fileInputComponent.element.innerHTML = `
           <div class="file-input-placeholder">${displayText}</div>
-           
         `;
       }
     }

@@ -1,10 +1,12 @@
 type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE";
 
-interface RequestOptions<T = unknown> {
+interface RequestOptions {
   method?: HTTPMethod;
   headers?: Record<string, string>;
-  data?: T;
+  data?: unknown;
   timeout?: number;
+  formData?: boolean; // Добавляем флаг для FormData
+  responseType?: XMLHttpRequestResponseType; // <-- ДОБАВИЛИ
 }
 
 interface QueryParams {
@@ -34,10 +36,10 @@ export class HTTPTransport {
     });
   }
 
-  public post<T = unknown, D = unknown>(
+  public post<T = unknown>(
     url: string,
-    data?: D,
-    options: Omit<RequestOptions<D>, "method" | "data"> = {}
+    data?: unknown,
+    options: Omit<RequestOptions, "method"> = {}
   ): Promise<HTTPResponse<T>> {
     return this.request<T>(url, {
       ...options,
@@ -46,10 +48,10 @@ export class HTTPTransport {
     });
   }
 
-  public put<T = unknown, D = unknown>(
+  public put<T = unknown>(
     url: string,
-    data?: D,
-    options: Omit<RequestOptions<D>, "method" | "data"> = {}
+    data?: unknown,
+    options: Omit<RequestOptions, "method"> = {}
   ): Promise<HTTPResponse<T>> {
     return this.request<T>(url, {
       ...options,
@@ -58,10 +60,10 @@ export class HTTPTransport {
     });
   }
 
-  public delete<T = unknown, D = unknown>(
+  public delete<T = unknown>(
     url: string,
-    data?: D,
-    options: Omit<RequestOptions<D>, "method" | "data"> = {}
+    data?: unknown,
+    options: Omit<RequestOptions, "method"> = {}
   ): Promise<HTTPResponse<T>> {
     return this.request<T>(url, {
       ...options,
@@ -74,22 +76,35 @@ export class HTTPTransport {
     url: string,
     options: RequestOptions = {}
   ): Promise<HTTPResponse<T>> {
-    const { method = "GET", headers = {}, data, timeout = 5000 } = options;
+    const {
+      method = "GET",
+      headers = {},
+      data,
+      timeout = 5000,
+      formData = false,
+    } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       const fullUrl = this.baseURL + url;
 
       xhr.open(method, fullUrl);
+      if (options.responseType) {
+        xhr.responseType = options.responseType;
+      }
 
+      xhr.withCredentials = true;
       xhr.timeout = timeout;
+
+      const isFormData = formData || data instanceof FormData;
+
+      if (!isFormData && data && method !== "GET") {
+        xhr.setRequestHeader("Content-Type", "application/json");
+      }
+
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
       });
-
-      if (!headers["Content-Type"] && data && method !== "GET") {
-        xhr.setRequestHeader("Content-Type", "application/json");
-      }
 
       xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
@@ -98,11 +113,11 @@ export class HTTPTransport {
               ? (JSON.parse(xhr.responseText) as T)
               : (null as T);
             resolve(response);
-          } catch (/* eslint-disable @typescript-eslint/no-unused-vars */ _error) {
+          } catch {
             resolve(xhr.responseText as T);
           }
         } else {
-          reject(new Error(`HTTP Error ${xhr.status}: ${xhr.statusText}`));
+          reject(xhr);
         }
       };
 
@@ -119,12 +134,12 @@ export class HTTPTransport {
       };
 
       if (data && method !== "GET") {
-        if (headers["Content-Type"] === "application/json") {
-          xhr.send(JSON.stringify(data));
-        } else if (data instanceof FormData) {
-          xhr.send(data);
+        if (isFormData) {
+          xhr.send(data as FormData);
         } else {
-          xhr.send(data as XMLHttpRequestBodyInit);
+          const requestData =
+            typeof data === "string" ? data : JSON.stringify(data);
+          xhr.send(requestData);
         }
       } else {
         xhr.send();

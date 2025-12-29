@@ -2,20 +2,24 @@ import Block from "../../core/block";
 import "./chatCard.scss";
 
 interface ChatCardProps {
+  id: number;
   name: string;
   text: string;
   time: string;
   count?: number;
+  isActive?: boolean;
   events?: {
-    click?: (event: Event) => void;
+    click?: () => void;
   };
 }
 
 export default class ChatCard extends Block {
   constructor(props: ChatCardProps) {
+    const className = props.isActive ? "card active" : "card";
+
     super("div", {
       ...props,
-      className: "card",
+      className: className,
       events: props.events,
     });
   }
@@ -29,10 +33,10 @@ export default class ChatCard extends Block {
   }
 
   render(): string {
-    const { name, text, time, count } = this.props;
+    const { name, text, time, count, isActive } = this.props;
 
     return `
-     
+      <div class="${isActive ? "card active" : "card"}">
         <div class="info">
           <div class="no-photo"></div>
           <div class="left-info">
@@ -44,7 +48,7 @@ export default class ChatCard extends Block {
           <p class="time">${time}</p>
           ${count ? `<p class="count">${count}</p>` : ""}
         </div>
-     
+      </div>
     `;
   }
 }

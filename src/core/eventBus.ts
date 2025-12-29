@@ -1,5 +1,5 @@
 export default class EventBus<
-  E extends string,
+  E extends string = string,
   T extends unknown[] = unknown[]
 > {
   private listeners: Record<string, ((...args: T) => void)[]> = {};

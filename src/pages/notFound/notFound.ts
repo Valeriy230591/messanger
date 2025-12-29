@@ -1,20 +1,31 @@
 import Block from "../../core/block";
-
 import ErrorStatus from "../../ui/errorStatus/errorStatus";
-interface notFoundPageProps {}
+
+interface NotFoundPageProps {
+  [key: string]: unknown;
+}
 
 export default class NotFoundPage extends Block {
-  constructor(props: notFoundPageProps) {
+  constructor(props: NotFoundPageProps = {}) {
     const error = new ErrorStatus({
       status: "404",
       text: "Не туда попали",
-      buttonText: "Назад к чатам",
+      buttonText: "Назад",
+      events: {
+        click: (event: Event) => {
+          event.preventDefault();
+
+          window.history.back();
+        },
+      },
     });
+
     super("div", {
       ...props,
       error,
     });
   }
+
   render(): string {
     return `
       <div class="container">  
