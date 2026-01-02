@@ -108,7 +108,7 @@ export default class AddUserForm extends Block {
 
               setTimeout(() => {
                 const addUserModal = document.querySelector(
-                  '[data-modal-type="add-user"]'
+                  "[data-modal-type=\"add-user\"]"
                 );
                 if (addUserModal) {
                   addUserModal.dispatchEvent(
@@ -157,24 +157,24 @@ export default class AddUserForm extends Block {
         </div>
 
         ${
-          errorMessage
-            ? `
+  errorMessage
+    ? `
           <div class="form-error">
             <span class="error-text">${errorMessage}</span>
           </div>
         `
-            : ""
-        }
+    : ""
+}
 
         ${
-          successMessage
-            ? `
+  successMessage
+    ? `
           <div class="form-success">
             <span class="success-text">${successMessage}</span>
           </div>
         `
-            : ""
-        }
+    : ""
+}
 
         <div class="form-actions">
           {{{addUserButton}}}

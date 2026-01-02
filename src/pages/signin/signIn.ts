@@ -131,7 +131,7 @@ class SignIn extends Block {
         <form class="signin-form">
           <h1>Регистрация</h1>
           ${signupError ? `<div class="form-error">${signupError}</div>` : ""}
-          ${isLoading ? '<div class="loading">Загрузка...</div>' : ""}
+          ${isLoading ? "<div class=\"loading\">Загрузка...</div>" : ""}
           
           {{{email}}}
           {{{login}}}

@@ -41,16 +41,16 @@ class SettingsPage extends Block {
 
     let component: Block;
     switch (activeSettingsPage) {
-      case "editProfile":
-        component = new EditProfilePage({}) as unknown as Block;
-        break;
-      case "editPassword":
-        component = new EditPasswordPage({}) as unknown as Block;
-        break;
-      case "profile":
-      default:
-        component = new ProfilePage({}) as unknown as Block;
-        break;
+    case "editProfile":
+      component = new EditProfilePage({}) as unknown as Block;
+      break;
+    case "editPassword":
+      component = new EditPasswordPage({}) as unknown as Block;
+      break;
+    case "profile":
+    default:
+      component = new ProfilePage({}) as unknown as Block;
+      break;
     }
 
     return component;

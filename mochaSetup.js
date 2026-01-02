@@ -6,3 +6,4 @@ global.window = jsdom.window;
 global.document = jsdom.window.document;
 global.MouseEvent = jsdom.window.MouseEvent;
 global.Node = jsdom.window.Node;
+global.global.HTMLElement = jsdom.window.HTMLElement;

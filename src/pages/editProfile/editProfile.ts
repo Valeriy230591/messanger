@@ -271,7 +271,7 @@ class EditProfilePage extends Block {
           </div>
           
           <form class="editProfile-form" autocomplete="off">
-            ${isLoading ? '<div class="loading">Сохранение...</div>' : ""}
+            ${isLoading ? "<div class=\"loading\">Сохранение...</div>" : ""}
             
             ${profileError ? `<div class="error">${profileError}</div>` : ""}
             

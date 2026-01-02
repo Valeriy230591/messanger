@@ -145,7 +145,7 @@ class ChatPage extends Block {
     const handleUserButtonClick = (event: Event) => {
       const target = event.target as HTMLElement;
       const button = target.closest(
-        '[data-action="open-modal"]'
+        "[data-action=\"open-modal\"]"
       ) as HTMLElement;
       if (button) {
         event.stopPropagation();
@@ -165,8 +165,8 @@ class ChatPage extends Block {
       if (!(target instanceof HTMLElement)) return;
       if (
         !target.closest(".modal-content") &&
-        !target.closest('[data-action="open-modal"]') &&
-        !target.closest('[data-action="create-chat"]')
+        !target.closest("[data-action=\"open-modal\"]") &&
+        !target.closest("[data-action=\"create-chat\"]")
       ) {
         userModal.close();
       }
@@ -213,11 +213,11 @@ class ChatPage extends Block {
         },
         click: (event: Event) => {
           const target = event.target as HTMLElement;
-          if (target.closest('[data-action="open-modal"]')) {
+          if (target.closest("[data-action=\"open-modal\"]")) {
             handleUserButtonClick(event);
-          } else if (target.closest('[data-action="profile"]')) {
+          } else if (target.closest("[data-action=\"profile\"]")) {
             handleProfileClick(event);
-          } else if (target.closest('[data-action="create-chat"]')) {
+          } else if (target.closest("[data-action=\"create-chat\"]")) {
             handleCreateChatClick(event);
           } else {
             handleOutsideClick(event);
@@ -306,6 +306,7 @@ class ChatPage extends Block {
         }
       }
     } catch (error) {
+      console.error(error);
       this.redirectToLogin();
     }
   }
@@ -328,6 +329,7 @@ class ChatPage extends Block {
         chats: formattedChats,
       });
     } catch (error) {
+      console.error(error);
       this.setProps({
         chats: [],
       });
@@ -411,12 +413,12 @@ class ChatPage extends Block {
           </form>
           <div class="card-wrapper">
             ${
-              isLoading
-                ? '<div class="loading">Загрузка чатов...</div>'
-                : chats && chats.length > 0
-                ? "{{{chatCardList}}}"
-                : '<div class="no-chats">Чатов пока нет</div>'
-            }
+  isLoading
+    ? "<div class=\"loading\">Загрузка чатов...</div>"
+    : chats && chats.length > 0
+      ? "{{{chatCardList}}}"
+      : "<div class=\"no-chats\">Чатов пока нет</div>"
+}
           </div>
         </article>
 
