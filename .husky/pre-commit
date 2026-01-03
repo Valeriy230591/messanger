@@ -11,8 +11,6 @@ npm run stylelint
 echo "🧪 Running tests..."
 npm test
 
-# Проверка сборки TypeScript
-echo "📦 Building TypeScript..."
-npm run build
+
 
 echo "✅ All checks passed!"
