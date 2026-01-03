@@ -1,4 +1,4 @@
-import Route from "./Route";
+import Route from "./Route.ts";
 
 export interface RouteInterface {
   render: () => void;

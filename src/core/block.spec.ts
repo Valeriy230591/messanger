@@ -5,25 +5,25 @@ import Block from "./block.ts";
 describe("Block", () => {
   describe("Public methods", () => {
     describe("constructor", () => {
-      it("should create element with default div tag", () => {
+      it("должен создавать элемент с тегом div по умолчанию", () => {
         const block = new Block();
         const content = block.getContent();
         expect(content?.tagName).to.equal("DIV");
       });
 
-      it("should create element with custom tag", () => {
+      it("должен создавать элемент с кастомным тегом", () => {
         const block = new Block("span");
         const content = block.getContent();
         expect(content?.tagName).to.equal("SPAN");
       });
 
-      it("should set className from props", () => {
+      it("должен устанавливать className из props", () => {
         const block = new Block("div", { className: "test-class" });
         const content = block.getContent();
         expect(content?.classList.contains("test-class")).to.be.true;
       });
 
-      it("should set attributes from props", () => {
+      it("должен устанавливать атрибуты из props", () => {
         const block = new Block("div", {
           attrs: { id: "test-id", "data-test": "value" },
         });
@@ -34,12 +34,12 @@ describe("Block", () => {
     });
 
     describe("componentDidMount", () => {
-      it("should be callable without throwing errors", () => {
+      it("должен вызываться без ошибок", () => {
         const block = new Block();
         expect(() => block.componentDidMount()).to.not.throw();
       });
 
-      it("should accept oldProps parameter", () => {
+      it("должен принимать параметр oldProps", () => {
         const block = new Block();
         const oldProps = { test: "value" };
         expect(() => block.componentDidMount(oldProps)).to.not.throw();
@@ -47,20 +47,20 @@ describe("Block", () => {
     });
 
     describe("dispatchComponentDidMount", () => {
-      it("should be callable without throwing errors", () => {
+      it("должен вызываться без ошибок", () => {
         const block = new Block();
         expect(() => block.dispatchComponentDidMount()).to.not.throw();
       });
     });
 
     describe("componentDidUpdate", () => {
-      it("should return true by default", () => {
+      it("должен возвращать true по умолчанию", () => {
         const block = new Block();
         const result = block.componentDidUpdate({}, {});
         expect(result).to.be.true;
       });
 
-      it("should receive oldProps and newProps parameters", () => {
+      it("должен получать параметры oldProps и newProps", () => {
         class TestBlock extends Block {
           public receivedOldProps: unknown = null;
           public receivedNewProps: unknown = null;
@@ -87,25 +87,25 @@ describe("Block", () => {
     });
 
     describe("setProps", () => {
-      it("should update existing props", () => {
+      it("должен обновлять существующие props", () => {
         const block = new Block("div", { test: "old" });
         block.setProps({ test: "new" });
         expect(block.props.test).to.equal("new");
       });
 
-      it("should add new props", () => {
+      it("должен добавлять новые props", () => {
         const block = new Block("div", { a: 1 });
         block.setProps({ b: 2 });
         expect(block.props.a).to.equal(1);
         expect(block.props.b).to.equal(2);
       });
 
-      it("should not throw when called with empty object", () => {
+      it("не должен вызывать ошибок при вызове с пустым объектом", () => {
         const block = new Block();
         expect(() => block.setProps({})).to.not.throw();
       });
 
-      it("should handle multiple property updates", () => {
+      it("должен обрабатывать множественные обновления свойств", () => {
         const block = new Block();
         block.setProps({ a: 1, b: 2, c: 3 });
         expect(block.props.a).to.equal(1);
@@ -115,20 +115,20 @@ describe("Block", () => {
     });
 
     describe("getContent", () => {
-      it("should return HTMLElement", () => {
+      it("должен возвращать HTMLElement", () => {
         const block = new Block();
         const content = block.getContent();
         expect(content).to.be.instanceOf(HTMLElement);
       });
 
-      it("should return the same element on multiple calls", () => {
+      it("должен возвращать один и тот же элемент при множественных вызовах", () => {
         const block = new Block();
         const content1 = block.getContent();
         const content2 = block.getContent();
         expect(content1).to.equal(content2);
       });
 
-      it("should return element with correct tag", () => {
+      it("должен возвращать элемент с правильным тегом", () => {
         const block = new Block("button");
         const content = block.getContent();
         expect(content?.tagName).to.equal("BUTTON");
@@ -136,18 +136,18 @@ describe("Block", () => {
     });
 
     describe("render", () => {
-      it("should return string", () => {
+      it("должен возвращать строку", () => {
         const block = new Block();
         const result = block.render();
         expect(result).to.be.a("string");
       });
 
-      it("should return empty string by default", () => {
+      it("должен возвращать пустую строку по умолчанию", () => {
         const block = new Block();
         expect(block.render()).to.equal("");
       });
 
-      it("should be overridable in child class", () => {
+      it("должен переопределяться в дочернем классе", () => {
         class TestBlock extends Block {
           public render(): string {
             return "<div>Custom Template</div>";
@@ -160,7 +160,7 @@ describe("Block", () => {
     });
 
     describe("show", () => {
-      it("should set display style to block", () => {
+      it("должен устанавливать display в block", () => {
         const block = new Block();
         const content = block.getContent();
 
@@ -171,7 +171,7 @@ describe("Block", () => {
         }
       });
 
-      it("should not throw when called multiple times", () => {
+      it("не должен вызывать ошибок при множественных вызовах", () => {
         const block = new Block();
         expect(() => {
           block.show();
@@ -182,7 +182,7 @@ describe("Block", () => {
     });
 
     describe("hide", () => {
-      it("should set display style to none", () => {
+      it("должен устанавливать display в none", () => {
         const block = new Block();
         const content = block.getContent();
 
@@ -193,7 +193,7 @@ describe("Block", () => {
         }
       });
 
-      it("should not throw when called multiple times", () => {
+      it("не должен вызывать ошибок при множественных вызовах", () => {
         const block = new Block();
         expect(() => {
           block.hide();
@@ -204,7 +204,7 @@ describe("Block", () => {
     });
 
     describe("Children handling", () => {
-      it("should correctly separate children from props", () => {
+      it("должен корректно отделять children от props", () => {
         const childBlock1 = new Block();
         const childBlock2 = new Block();
 
@@ -221,7 +221,7 @@ describe("Block", () => {
         expect(parentBlock.children.child2).to.equal(childBlock2);
       });
 
-      it("should handle array of children", () => {
+      it("должен обрабатывать массив children", () => {
         const childBlocks = [new Block(), new Block(), new Block()];
 
         const parentBlock = new Block("div", {
@@ -233,7 +233,7 @@ describe("Block", () => {
         expect(parentBlock.props.title).to.equal("List");
       });
 
-      it("should handle mixed array (non-Blocks stay as props)", () => {
+      it("должен обрабатывать смешанный массив (не-Block элементы остаются в props)", () => {
         const parentBlock = new Block("div", {
           items: [1, 2, 3],
           blocks: [new Block(), new Block()],
@@ -245,7 +245,7 @@ describe("Block", () => {
     });
 
     describe("Props proxy behavior", () => {
-      it("should allow function binding in props", () => {
+      it("должен позволять привязку функций в props", () => {
         const myFunction = function (this: { value: string }) {
           return this.value;
         };
@@ -258,7 +258,7 @@ describe("Block", () => {
         expect(block.props.myFunction).to.be.a("function");
       });
 
-      it("should allow reading nested props", () => {
+      it("должен позволять чтение вложенных props", () => {
         const block = new Block("div", {
           user: { name: "John", age: 30 },
         });
