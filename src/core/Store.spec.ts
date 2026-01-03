@@ -291,8 +291,6 @@ describe("Store", () => {
     });
 
     it("должен корректно работать с getInstance после сброса", () => {
-      const store = new Store({ a: 1 });
-
       resetStoreSingleton();
 
       expect(() => Store.getInstance()).to.throw("Store not initialized");
