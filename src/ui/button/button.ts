@@ -1,4 +1,4 @@
-import Block from "../../core/block";
+import Block from "../../core/block.ts";
 import "./button.scss";
 
 interface ButtonProps {
