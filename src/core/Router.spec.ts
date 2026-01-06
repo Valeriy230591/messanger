@@ -220,7 +220,6 @@ describe("Router", () => {
         cancelable: true,
       });
 
-      // Мокаем preventDefault
       Object.defineProperty(event, "preventDefault", {
         value: function (): void {
           preventDefaultCalled = true;
@@ -233,7 +232,6 @@ describe("Router", () => {
       expect(preventDefaultCalled).to.be.true;
       expect(goCalledWith).to.equal("/page");
 
-      // Восстанавливаем
       router.go = originalGo;
     });
 

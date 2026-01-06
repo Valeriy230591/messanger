@@ -1,6 +1,6 @@
-import { StoreEvents } from "../core/Store";
-import isEqual from "./isEqual";
-import type { ConnectableConstructor } from "../types/block";
+import { StoreEvents } from "../core/Store.ts";
+import isEqual from "./isEqual.ts";
+import type { ConnectableConstructor } from "../types/block.ts";
 
 type MapStateToProps<T> = (state: Record<string, unknown>) => T;
 

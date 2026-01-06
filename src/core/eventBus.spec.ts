@@ -1,4 +1,3 @@
-// EventBus.spec.ts
 import { expect } from "chai";
 import EventBus from "./eventBus.ts";
 
@@ -382,8 +381,6 @@ describe("EventBus", () => {
         eventBus.emit("test");
       }).to.throw("Ошибка в обработчике");
 
-      // В текущей реализации EventBus при ошибке прерывает выполнение
-      // Поэтому второй обработчик не должен быть вызван
       expect(errorHandlerCalled).to.be.true;
       expect(otherCallbackCalled).to.be.false;
     });

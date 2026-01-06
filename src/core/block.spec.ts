@@ -1,4 +1,3 @@
-// block.spec.ts
 import { expect } from "chai";
 import Block from "./block.ts";
 

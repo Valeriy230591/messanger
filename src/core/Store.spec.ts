@@ -3,7 +3,6 @@ import { expect } from "chai";
 import { Store, StoreEvents } from "./Store.ts";
 
 describe("Store", () => {
-  // Вспомогательная функция для сброса синглтона
   const resetStoreSingleton = (): void => {
     const storeClass = Store as unknown as {
       __instance?: Store<Record<string, unknown>>;
@@ -66,7 +65,7 @@ describe("Store", () => {
       const state2 = store.getState();
 
       expect(state1).to.deep.equal(state2);
-      expect(state1).to.equal(state2); // Должна быть та же ссылка
+      expect(state1).to.equal(state2);
     });
   });
 
@@ -137,7 +136,6 @@ describe("Store", () => {
 
       typedStore.set({});
 
-      // Должен все равно сработать событие
       setTimeout(() => {
         expect(eventFired).to.be.true;
         expect(typedStore.getState()).to.deep.equal({ a: 1, b: 2 });
@@ -227,12 +225,9 @@ describe("Store", () => {
         eventFired = true;
       });
 
-      // Устанавливаем то же значение
       typedStore.set({ value: 1 });
 
       setTimeout(() => {
-        // Событие все равно должно сработать, даже если значение не изменилось
-        // Это ожидаемое поведение для Store
         expect(eventFired).to.be.true;
         done();
       }, 0);
@@ -335,7 +330,6 @@ describe("Store", () => {
 
       expect(state1.nested.deep.value).to.equal(1);
       expect(state2.nested.deep.value).to.equal(2);
-      // При обновлении вложенного объекта создается новый объект состояния
       expect(state1).to.not.equal(state2);
       expect(state1.nested).to.not.equal(state2.nested);
       expect(state1.nested.deep).to.not.equal(state2.nested.deep);
@@ -368,18 +362,15 @@ describe("Store", () => {
 
       const initialState = store.getState();
 
-      // Меняем только настройки
       store.set({
         settings: { theme: "light" },
       });
 
       const updatedState = store.getState();
 
-      // User должен остаться той же ссылкой
       expect(initialState.user).to.equal(updatedState.user);
       expect(initialState.user.profile).to.equal(updatedState.user.profile);
 
-      // Settings должен быть новой ссылкой
       expect(initialState.settings).to.not.equal(updatedState.settings);
     });
   });

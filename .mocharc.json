@@ -3,5 +3,5 @@
   "spec": "src/**/*.spec.ts",
   "require": ["mochaSetup.js"],
   "loader": ["ts-node/esm"],
-  "node-option": ["no-warnings", "experimental-specifier-resolution=node"]
+  "node-option": ["experimental-specifier-resolution=node"]
 }
