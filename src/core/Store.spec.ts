@@ -1,4 +1,3 @@
-// Store.spec.ts
 import { expect } from "chai";
 import { Store, StoreEvents } from "./Store.ts";
 
