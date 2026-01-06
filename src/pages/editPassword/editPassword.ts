@@ -232,15 +232,15 @@ class EditPasswordPage extends Block {
             {{{oldPasswordInput}}}
             {{{newPasswordInput}}}
             {{{repeatPasswordInput}}}
-              ${isLoading ? '<div class="loading">Сохранение...</div>' : ""}
+              ${isLoading ? "<div class=\"loading\">Сохранение...</div>" : ""}
             
             ${passwordError ? `<div class="error">${passwordError}</div>` : ""}
             
             ${
-              this.validationError
-                ? `<div class="error validation-error">${this.validationError}</div>`
-                : ""
-            }
+  this.validationError
+    ? `<div class="error validation-error">${this.validationError}</div>`
+    : ""
+}
             <div class="btn-wrapper">
               {{{backButton}}}
               {{{saveButton}}}

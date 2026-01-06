@@ -1,6 +1,6 @@
 type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE";
 
-interface RequestOptions {
+export interface RequestOptions {
   method?: HTTPMethod;
   headers?: Record<string, string>;
   data?: unknown;
@@ -8,8 +8,7 @@ interface RequestOptions {
   formData?: boolean; // Добавляем флаг для FormData
   responseType?: XMLHttpRequestResponseType; // <-- ДОБАВИЛИ
 }
-
-interface QueryParams {
+export interface QueryParams {
   [key: string]: string | number | boolean;
 }
 

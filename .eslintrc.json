@@ -4,7 +4,9 @@
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true,
+    "mocha": true
   },
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -15,6 +17,7 @@
     "indent": ["warn", 2],
     "quotes": ["warn", "double"],
     "semi": ["warn", "always"],
+    "linebreak-style": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
@@ -25,6 +28,8 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/no-unsafe-function-type": "warn",
-    "no-dupe-else-if": "error"
+    "no-dupe-else-if": "error",
+    "no-unused-expressions": "off",
+    "@typescript-eslint/no-unused-expressions": "off"
   }
 }

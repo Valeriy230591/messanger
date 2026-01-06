@@ -254,15 +254,15 @@ export default class Avatar extends Block {
         ${uploadError ? `<div class="avatar-error">${uploadError}</div>` : ""}
 
         ${
-          isUploading
-            ? `
+  isUploading
+    ? `
           <div class="avatar-uploading">
             <div class="spinner"></div>
             <span>Загрузка...</span>
           </div>
         `
-            : ""
-        }
+    : ""
+}
 
         {{{avatarModal}}}
       </div>

@@ -89,6 +89,7 @@ export const deleteChat = async (chatId: number): Promise<boolean> => {
     await getChats();
     return true;
   } catch (error) {
+    console.error(error);
     return false;
   }
 };
@@ -100,6 +101,7 @@ export const getChatUsers = async (
     const users = await chatsApi.getChatUsers(chatId);
     return users;
   } catch (error) {
+    console.error(error);
     return [];
   }
 };
@@ -109,6 +111,7 @@ export const getChatToken = async (chatId: number): Promise<string | null> => {
     const response = await chatsApi.getChatToken(chatId);
     return response.token;
   } catch (error) {
+    console.error(error);
     return null;
   }
 };
@@ -121,6 +124,7 @@ export const addUsersToChat = async (
     await chatsApi.addUsersToChat({ users: userIds, chatId });
     return true;
   } catch (error) {
+    console.error(error);
     return false;
   }
 };
@@ -133,6 +137,7 @@ export const deleteUsersFromChat = async (
     await chatsApi.deleteUsersFromChat({ users: userIds, chatId });
     return true;
   } catch (error) {
+    console.error(error);
     return false;
   }
 };
@@ -181,10 +186,8 @@ export const createChatWebSocket = async (
       );
 
       if (onMessage) {
-        // Если передан callback, используем его
         onMessage(data);
       } else {
-        // Иначе стандартная обработка (для обратной совместимости)
         if (Array.isArray(data)) {
           window.store.set({ messages: data });
         } else if (data.type === "message") {
@@ -200,6 +203,7 @@ export const createChatWebSocket = async (
 
     return socket;
   } catch (error) {
+    console.error(error);
     return null;
   }
 };
@@ -221,6 +225,7 @@ export const sendMessage = (
     socket.send(JSON.stringify(messageData));
     return true;
   } catch (error) {
+    console.error(error);
     return false;
   }
 };

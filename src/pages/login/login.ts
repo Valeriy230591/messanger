@@ -101,7 +101,7 @@ class LoginPage extends Block {
           <h1>Вход в систему</h1>
           {{{loginInput}}}
           {{{passwordInput}}}
-           ${isLoading ? '<div class="loading">Загрузка...</div>' : ""}
+           ${isLoading ? "<div class=\"loading\">Загрузка...</div>" : ""}
           
           ${loginError ? `<div class="error">${loginError}</div>` : ""}
           {{{button}}}

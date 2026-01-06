@@ -1,0 +1,16 @@
+echo "🏃 Running pre-commit checks..."
+
+# Запуск линтеров
+echo "🔍 Running ESLint..."
+npm run lint
+
+echo "🎨 Running Stylelint..."
+npm run stylelint
+
+# Запуск тестов
+echo "🧪 Running tests..."
+npm test
+
+
+
+echo "✅ All checks passed!"

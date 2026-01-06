@@ -99,7 +99,7 @@ export default class RemoveUserForm extends Block {
 
               setTimeout(() => {
                 const removeUserModal = document.querySelector(
-                  '[data-modal-type="remove-user"]'
+                  "[data-modal-type=\"remove-user\"]"
                 );
                 if (removeUserModal) {
                   removeUserModal.dispatchEvent(
@@ -148,24 +148,24 @@ export default class RemoveUserForm extends Block {
         </div>
 
         ${
-          errorMessage
-            ? `
+  errorMessage
+    ? `
           <div class="form-error">
             <span class="error-text">${errorMessage}</span>
           </div>
         `
-            : ""
-        }
+    : ""
+}
 
         ${
-          successMessage
-            ? `
+  successMessage
+    ? `
           <div class="form-success">
             <span class="success-text">${successMessage}</span>
           </div>
         `
-            : ""
-        }
+    : ""
+}
 
         <div class="form-actions">
           {{{removeUserButton}}}
